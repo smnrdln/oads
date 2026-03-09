@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Open Academy is a modern learning system for electronics, PCB design, hardware thinking, and hands-on technical growth.">
+    <meta name="keywords"
+        content="academy, learning system, electronics, PCB design, engineering training, hardware education">
+    <meta name="author" content="Saman Ardalan">
+    <meta name="theme-color" content="#0f172a">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Open Academy Learning System">
+    <meta property="og:description"
+        content="A polished front page for the academy learning system with guided tracks, practical training, and a direct path into the PCB trainer.">
+    <meta property="og:site_name" content="Open Academy">
+    <title>Open Academy | Learning System</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4757211359193207"
+        crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg-soft: #0f172a;
+            --panel: rgba(15, 23, 42, 0.8);
+            --panel-strong: rgba(8, 15, 30, 0.96);
+            --line: rgba(148, 163, 184, 0.18);
+            --text: #e5eefb;
+            --muted: #9fb1c9;
+            --accent: #f97316;
+            --accent-soft: #fdba74;
+            --secondary: #38bdf8;
+            --success: #34d399;
+            --shadow: 0 24px 60px rgba(2, 6, 23, 0.45);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --radius-sm: 14px;
+            --content-width: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 28%),
+                radial-gradient(circle at top right, rgba(249, 115, 22, 0.20), transparent 32%),
+                linear-gradient(180deg, #09101d 0%, #07111f 48%, #0b1325 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+            background-size: 36px 36px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 92%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            position: relative;
+            width: min(calc(100% - 32px), var(--content-width));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(7, 17, 31, 0.72);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .site-header .shell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 18px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-mark {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.28), rgba(56, 189, 248, 0.28));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: var(--shadow);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .brand-copy strong,
+        .brand-copy span {
+            display: block;
+        }
+
+        .brand-copy strong {
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-copy span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            padding: 10px 14px;
+            border-radius: 999px;
+            color: var(--muted);
+            transition: color 160ms ease, background 160ms ease;
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .nav .nav-cta {
+            color: #08111f;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            font-weight: 600;
+        }
+
+        main {
+            padding: 34px 0 72px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+            gap: 28px;
+            align-items: stretch;
+            margin-top: 22px;
+        }
+
+        .hero-card,
+        .panel {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-card {
+            padding: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -50px -50px auto;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 68%);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--accent-soft);
+            font-size: 0.88rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+        }
+
+        .hero-card h1 {
+            margin-top: 18px;
+            font-size: clamp(2.8rem, 7vw, 5.2rem);
+            line-height: 0.96;
+            letter-spacing: -0.04em;
+            max-width: 10ch;
+        }
+
+        .hero-card p {
+            margin-top: 18px;
+            max-width: 62ch;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 52px;
+            padding: 0 22px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            color: #08111f;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            box-shadow: 0 18px 34px rgba(249, 115, 22, 0.28);
+        }
+
+        .button-secondary {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .metric {
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 1.7rem;
+            letter-spacing: -0.03em;
+        }
+
+        .metric span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .panel {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background:
+                linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(8, 15, 30, 0.94));
+        }
+
+        .panel-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .status-pill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            color: #d1fae5;
+            background: rgba(52, 211, 153, 0.12);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+        }
+
+        .launch-card {
+            margin-top: 26px;
+            padding: 22px;
+            border-radius: 22px;
+            background:
+                linear-gradient(160deg, rgba(56, 189, 248, 0.12), rgba(249, 115, 22, 0.12)),
+                rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .launch-card h2 {
+            font-size: 1.8rem;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .launch-card p {
+            margin-top: 12px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .launch-points {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .launch-points span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-size: 0.96rem;
+        }
+
+        .launch-points span::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+        }
+
+        .section {
+            margin-top: 32px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            letter-spacing: -0.04em;
+        }
+
+        .section-head p {
+            max-width: 46ch;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .grid-3,
+        .grid-4,
+        .flow-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .flow-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .card {
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: var(--shadow);
+        }
+
+        .card-number,
+        .card-kicker {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            min-height: 42px;
+            padding: 0 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-soft);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .card h3 {
+            margin-top: 18px;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .card p {
+            margin-top: 12px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .path-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .path-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -40px -60px auto;
+            width: 180px;
+            height: 180px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.14), transparent 66%);
+        }
+
+        .path-card .tag {
+            display: inline-flex;
+            margin-top: 16px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.10);
+            color: #bae6fd;
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .feature-banner {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+            gap: 18px;
+            align-items: stretch;
+            margin-top: 32px;
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
+            background:
+                linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(56, 189, 248, 0.14)),
+                rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-banner h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: -0.04em;
+        }
+
+        .feature-banner p {
+            margin-top: 14px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .spotlight {
+            display: grid;
+            gap: 14px;
+        }
+
+        .spotlight-box {
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(8, 15, 30, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .spotlight-box strong {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .spotlight-box span {
+            display: block;
+            margin-top: 8px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 28px 0 10px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding-top: 18px;
+            border-top: 1px solid rgba(148, 163, 184, 0.12);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 1024px) {
+            .hero,
+            .feature-banner,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-3,
+            .flow-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 720px) {
+            .site-header {
+                position: static;
+            }
+
+            .site-header .shell,
+            .section-head,
+            .footer-row {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero-card,
+            .panel,
+            .feature-banner {
+                padding: 24px;
+            }
+
+            .hero-card h1 {
+                max-width: none;
+                font-size: clamp(2.3rem, 13vw, 4rem);
+            }
+
+            .hero-metrics,
+            .grid-3,
+            .flow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                width: 100%;
+            }
+
+            .nav a,
+            .nav .nav-cta {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="shell">
+            <a class="brand" href="#top" aria-label="Open Academy home">
+                <div class="brand-mark">OA</div>
+                <div class="brand-copy">
+                    <strong>Open Academy</strong>
+                    <span>Learning System</span>
+                </div>
+            </a>
+            <nav class="nav" aria-label="Primary navigation">
+                <a href="#paths">Learning Paths</a>
+                <a href="#experience">Experience</a>
+                <a href="#launch">Start Now</a>
+                <a class="nav-cta" href="../oa-pcb/index.html">Open PCB Trainer</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <div class="shell">
+            <section class="hero" aria-label="Open Academy overview">
+                <article class="hero-card">
+                    <div class="eyebrow">Built for practical technical learning</div>
+                    <h1>The front door for your academy learning system.</h1>
+                    <p>
+                        Open Academy brings lessons, guided practice, and real skill-building into one clear entry point.
+                        Start with the live PCB design track, then expand into deeper electronics and engineering workflows.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="../oa-pcb/index.html">Launch PCB Design Track</a>
+                        <a class="button button-secondary" href="#paths">See the roadmap</a>
+                    </div>
+                    <div class="hero-metrics" aria-label="Academy highlights">
+                        <div class="metric">
+                            <strong>01</strong>
+                            <span>Live technical training module ready now</span>
+                        </div>
+                        <div class="metric">
+                            <strong>Hands-on</strong>
+                            <span>Practice-oriented lessons over passive reading</span>
+                        </div>
+                        <div class="metric">
+                            <strong>Clear flow</strong>
+                            <span>One landing page for the entire system</span>
+                        </div>
+                    </div>
+                </article>
+
+                <aside class="panel" id="launch">
+                    <div>
+                        <div class="panel-top">
+                            <span>Current academy launchpad</span>
+                            <span class="status-pill">Module live</span>
+                        </div>
+                        <div class="launch-card">
+                            <h2>Electronics and PCB Design Trainer</h2>
+                            <p>
+                                The first active academy experience is already in place: structured lessons, exercises,
+                                scenarios, progress tracking, and multilingual support for serious technical learning.
+                            </p>
+                            <div class="launch-points" aria-label="Trainer capabilities">
+                                <span>Guided lesson progression</span>
+                                <span>Exercises and scenario-based practice</span>
+                                <span>Progress, XP, and streak tracking</span>
+                                <span>English and German support</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="../oa-pcb/index.html">Enter the trainer</a>
+                        <a class="button button-secondary" href="https://github.com/smnrdln/pcbtrainer"
+                            target="_blank" rel="noopener noreferrer">View source</a>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="section" id="experience">
+                <div class="section-head">
+                    <div>
+                        <h2>Designed to feel like a real system, not a single page.</h2>
+                    </div>
+                    <p>
+                        This landing page frames the academy as one connected product: discover the mission, understand
+                        the learning flow, and jump directly into the live module.
+                    </p>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <div class="card-kicker">01</div>
+                        <h3>Strong first impression</h3>
+                        <p>
+                            A bold hero section establishes the academy immediately and gives visitors a clear action to take.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <div class="card-kicker">02</div>
+                        <h3>Clear structure</h3>
+                        <p>
+                            Users can understand the academy at a glance through learning paths, workflow sections, and a direct entry point.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <div class="card-kicker">03</div>
+                        <h3>Ready for growth</h3>
+                        <p>
+                            The layout already supports multiple future tracks while giving the current PCB trainer a strong spotlight.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="paths">
+                <div class="section-head">
+                    <div>
+                        <h2>Academy tracks</h2>
+                    </div>
+                    <p>
+                        Use the landing page to present the academy as a growing platform. The PCB trainer is the live path today,
+                        and the structure below leaves room for the next modules.
+                    </p>
+                </div>
+                <div class="grid-4">
+                    <article class="card path-card">
+                        <div class="card-number">A1</div>
+                        <h3>Electronics Foundations</h3>
+                        <p>
+                            Build intuition for circuits, components, schematics, measurement, and failure modes before diving deeper.
+                        </p>
+                        <span class="tag">Roadmap</span>
+                    </article>
+                    <article class="card path-card">
+                        <div class="card-number">A2</div>
+                        <h3>PCB Design</h3>
+                        <p>
+                            Move from schematic capture to routing, manufacturability, layout decisions, and review discipline.
+                        </p>
+                        <span class="tag">Live now</span>
+                    </article>
+                    <article class="card path-card">
+                        <div class="card-number">A3</div>
+                        <h3>Embedded Hardware</h3>
+                        <p>
+                            Connect boards to systems with practical design choices around interfaces, power, and reliability.
+                        </p>
+                        <span class="tag">Planned</span>
+                    </article>
+                    <article class="card path-card">
+                        <div class="card-number">A4</div>
+                        <h3>Production Readiness</h3>
+                        <p>
+                            Prepare learners for testing, troubleshooting, documentation, iteration cycles, and deployment quality.
+                        </p>
+                        <span class="tag">Planned</span>
+                    </article>
+                </div>
+            </section>
+
+            <section class="feature-banner">
+                <div>
+                    <div class="eyebrow">Current flagship module</div>
+                    <h2>Start where the academy is already strongest.</h2>
+                    <p>
+                        The Electronics and PCB Design Trainer is the active learning experience in this system. It already includes
+                        structured lessons, navigation, progress tracking, and practical content. This page now gives it a proper
+                        academy-level front entrance.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="../oa-pcb/index.html">Go to the trainer</a>
+                    </div>
+                </div>
+                <div class="spotlight">
+                    <div class="spotlight-box">
+                        <strong>Structured progression</strong>
+                        <span>Lessons are organized in clear levels so the learning path feels intentional.</span>
+                    </div>
+                    <div class="spotlight-box">
+                        <strong>Practical reinforcement</strong>
+                        <span>Exercises and scenarios keep the system focused on doing, not just reading.</span>
+                    </div>
+                    <div class="spotlight-box">
+                        <strong>System identity</strong>
+                        <span>The landing page ties the existing module into one broader academy product story.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <h2>How learners move through it</h2>
+                    </div>
+                    <p>
+                        The flow is simple: arrive here, understand the academy, choose the current live path, and continue through
+                        structured hands-on progression.
+                    </p>
+                </div>
+                <div class="flow-grid">
+                    <article class="card">
+                        <div class="card-number">01</div>
+                        <h3>Discover</h3>
+                        <p>Use the first page to establish trust, scope, and the value of the academy.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-number">02</div>
+                        <h3>Choose</h3>
+                        <p>Highlight the live PCB path now while keeping the broader learning system visible.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-number">03</div>
+                        <h3>Advance</h3>
+                        <p>Move learners into structured content, practical work, and measurable progress.</p>
+                    </article>
+                </div>
+            </section>
+
+            <footer>
+                <div class="footer-row">
+                    <span>Open Academy is the front page for the broader learning system and links directly into the live PCB trainer.</span>
+                    <div class="footer-links">
+                        <a href="#top">Back to top</a>
+                        <a href="#paths">Learning paths</a>
+                        <a href="../oa-pcb/index.html">Open trainer</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>
