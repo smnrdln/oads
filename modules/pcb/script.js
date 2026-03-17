@@ -718,29 +718,10 @@ function completeTopic(levelId, topicName) {
 // Visual Reference Modal (iframe overlay)
 // ════════════════════════════════════════════════
 function openVisualRef(url) {
-    // Create modal overlay
-    const overlay = document.createElement('div');
-    overlay.id = 'visualRefOverlay';
-    overlay.className = 'visual-ref-overlay';
-    overlay.innerHTML = `
-        <div class="visual-ref-modal">
-            <div class="visual-ref-modal-header">
-                <span>${t('visualRef.title')}</span>
-                <button class="visual-ref-close" onclick="closeVisualRef()">✕</button>
-            </div>
-            <iframe src="${url}" class="visual-ref-iframe"></iframe>
-            <div class="visual-ref-modal-footer">
-                <a href="${url}" target="_blank" rel="noopener" class="visual-ref-open-tab">${t('visualRef.openNewTab')}</a>
-            </div>
-        </div>
-    `;
-    // Close on backdrop click
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeVisualRef();
-    });
-    document.body.appendChild(overlay);
-    // Animate in
-    requestAnimationFrame(() => overlay.classList.add('active'));
+    // Open in a new tab directly instead of an iframe to bypass the repeated 
+    // Google cookie consent screen. Modern browsers block 3rd-party cookies 
+    // in iframes, causing Google to ask for cookie permission every single time.
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function closeVisualRef() {
