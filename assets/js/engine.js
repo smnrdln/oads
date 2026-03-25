@@ -392,6 +392,9 @@ function showTopic(levelId, topicIndex) {
 
     const allScenarios = i18n.getContent('scenarios') || [];
     const topicScenarios = allScenarios.filter(s => s.level === levelId && s.topicIndex === topicIndex);
+    const keyPoints = Array.isArray(content.keyPoints) ? content.keyPoints : [];
+    const relatedTopics = Array.isArray(content.relatedTopics) ? content.relatedTopics : [];
+    const resources = Array.isArray(content.resources) ? content.resources : [];
 
     main.innerHTML = `
         <div class="topic-view">
@@ -408,24 +411,24 @@ function showTopic(levelId, topicIndex) {
             <div class="key-points">
                 <h3>${t('topic.keyTakeaways')}</h3>
                 <ul>
-                    ${content.keyPoints.map(p => `<li>${p}</li>`).join('')}
+                    ${keyPoints.map(p => `<li>${p}</li>`).join('')}
                 </ul>
             </div>
 
-            ${content.relatedTopics && content.relatedTopics.length > 0 ? `
+            ${relatedTopics.length > 0 ? `
                 <div class="related-topics">
                     <h3>${t('topic.relatedTopics')}</h3>
                     <div class="related-chips">
-                        ${content.relatedTopics.map(rt => `<span class="related-chip" onclick="showTopic('${rt.level}', ${rt.index})">${rt.label}</span>`).join('')}
+                        ${relatedTopics.map(rt => `<span class="related-chip" onclick="showTopic('${rt.level}', ${rt.index})">${rt.label}</span>`).join('')}
                     </div>
                 </div>
             ` : ''}
 
-            ${content.resources && content.resources.length > 0 ? `
+            ${resources.length > 0 ? `
                 <div class="external-resources">
                     <h3>${t('topic.furtherReading')}</h3>
                     <ul>
-                        ${content.resources.map(r => `<li><a href="${r.url}" target="_blank" rel="noopener">${r.title} ↗</a></li>`).join('')}
+                        ${resources.map(r => `<li><a href="${r.url}" target="_blank" rel="noopener">${r.title} ↗</a></li>`).join('')}
                     </ul>
                 </div>
             ` : ''}
