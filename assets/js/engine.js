@@ -23,8 +23,14 @@ let userProgress = {
 };
 
 let currentView = { levelId: null, topicIndex: null };
+let searchState = {
+    query: '',
+    tokens: []
+};
+const collapsedLevelGroups = new Set();
 
 const themeStorageKey = 'appTheme';
+const searchInputId = 'sidebarSearchInput';
 
 const _storageKey = (window.MODULE_CONFIG && window.MODULE_CONFIG.storageKey)
     ? window.MODULE_CONFIG.storageKey
@@ -91,6 +97,309 @@ function topicLabel(topicName, levelId, topicIndex) {
 
 function categoryLabel(category) {
     return t(`category.${category}`);
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function stripDiacritics(value) {
+    return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function normalizeSearchText(value) {
+    return stripDiacritics(value).toLowerCase();
+}
+
+function tokenizeSearchQuery(query) {
+    const normalized = normalizeSearchText(query).replace(/[^a-z0-9]+/g, ' ').trim();
+    if (!normalized) return [];
+    return [...new Set(normalized.split(/\s+/).filter(Boolean))].sort((a, b) => b.length - a.length);
+}
+
+function extractTextFromHtml(html) {
+    const container = document.createElement('div');
+    container.innerHTML = html || '';
+    return container.textContent || '';
+}
+
+function countTokenOccurrences(text, token) {
+    let count = 0;
+    let start = text.indexOf(token);
+    while (start !== -1) {
+        count++;
+        start = text.indexOf(token, start + token.length);
+    }
+    return count;
+}
+
+function countSearchMatches(text, tokens) {
+    return tokens.reduce((sum, token) => sum + countTokenOccurrences(text, token), 0);
+}
+
+function buildSearchRanges(text, tokens) {
+    if (!tokens.length || !text) return [];
+
+    const codePoints = Array.from(String(text));
+    let normalizedText = '';
+    const indexMap = [];
+    let sourceIndex = 0;
+
+    codePoints.forEach(char => {
+        const normalizedChar = normalizeSearchText(char);
+        const charLength = char.length;
+
+        if (!normalizedChar) {
+            sourceIndex += charLength;
+            return;
+        }
+
+        for (let i = 0; i < normalizedChar.length; i++) {
+            normalizedText += normalizedChar[i];
+            indexMap.push(sourceIndex);
+        }
+
+        sourceIndex += charLength;
+    });
+
+    const ranges = [];
+    tokens.forEach(token => {
+        let start = normalizedText.indexOf(token);
+        while (start !== -1) {
+            const end = start + token.length;
+            ranges.push([indexMap[start], indexMap[end - 1] + 1]);
+            start = normalizedText.indexOf(token, start + 1);
+        }
+    });
+
+    ranges.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    return ranges.reduce((merged, range) => {
+        const previous = merged[merged.length - 1];
+        if (!previous || range[0] > previous[1]) {
+            merged.push(range);
+            return merged;
+        }
+        previous[1] = Math.max(previous[1], range[1]);
+        return merged;
+    }, []);
+}
+
+function renderHighlightedText(text, tokens) {
+    const value = String(text || '');
+    const ranges = buildSearchRanges(value, tokens);
+    if (!ranges.length) return escapeHtml(value);
+
+    let output = '';
+    let cursor = 0;
+    ranges.forEach(([start, end]) => {
+        output += escapeHtml(value.slice(cursor, start));
+        output += `<mark class="search-highlight">${escapeHtml(value.slice(start, end))}</mark>`;
+        cursor = end;
+    });
+    output += escapeHtml(value.slice(cursor));
+    return output;
+}
+
+function clearSearchHighlights(root) {
+    if (!root) return;
+
+    root.querySelectorAll('mark.search-highlight').forEach(mark => {
+        const textNode = document.createTextNode(mark.textContent || '');
+        mark.replaceWith(textNode);
+    });
+
+    root.normalize();
+}
+
+function applySearchHighlights(root, tokens) {
+    if (!root) return;
+
+    clearSearchHighlights(root);
+    if (!tokens.length) return;
+
+    const textNodes = [];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+            if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+
+            const parent = node.parentElement;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (parent.closest('script, style, noscript, mark.search-highlight, input, textarea, select, option')) {
+                return NodeFilter.FILTER_REJECT;
+            }
+
+            return NodeFilter.FILTER_ACCEPT;
+        }
+    });
+
+    while (walker.nextNode()) {
+        textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach(node => {
+        const text = node.nodeValue || '';
+        const ranges = buildSearchRanges(text, tokens);
+        if (!ranges.length) return;
+
+        const fragment = document.createDocumentFragment();
+        let cursor = 0;
+
+        ranges.forEach(([start, end]) => {
+            if (cursor < start) {
+                fragment.appendChild(document.createTextNode(text.slice(cursor, start)));
+            }
+
+            const mark = document.createElement('mark');
+            mark.className = 'search-highlight';
+            mark.textContent = text.slice(start, end);
+            fragment.appendChild(mark);
+            cursor = end;
+        });
+
+        if (cursor < text.length) {
+            fragment.appendChild(document.createTextNode(text.slice(cursor)));
+        }
+
+        node.parentNode.replaceChild(fragment, node);
+    });
+}
+
+function buildTopicSearchText(level, topic, topicIndex, content, topicQuizzes, topicScenarios) {
+    const pieces = [
+        topic.name,
+        topicLabel(topic.name, level.id, topicIndex),
+        t(level.name),
+        categoryLabel(topic.category)
+    ];
+
+    if (content) {
+        pieces.push(content.title || '');
+        pieces.push(extractTextFromHtml(content.content || ''));
+        pieces.push(Array.isArray(content.keyPoints) ? content.keyPoints.join(' ') : '');
+        pieces.push(Array.isArray(content.relatedTopics) ? content.relatedTopics.map(rt => rt.label).join(' ') : '');
+        pieces.push(Array.isArray(content.resources) ? content.resources.map(r => `${r.title || ''} ${r.url || ''}`).join(' ') : '');
+    }
+
+    pieces.push((topicQuizzes || []).map(q => [
+        q.question || '',
+        q.explanation || '',
+        Array.isArray(q.options) ? q.options.join(' ') : '',
+        q.unit || ''
+    ].join(' ')).join(' '));
+
+    pieces.push((topicScenarios || []).map(s => [
+        s.title || '',
+        s.description || '',
+        s.explanation || '',
+        Array.isArray(s.choices) ? s.choices.map(choice => choice.text || '').join(' ') : ''
+    ].join(' ')).join(' '));
+
+    return normalizeSearchText(pieces.join(' '));
+}
+
+function getSidebarSearchResults(tokens) {
+    const allQuizzes = i18n.getContent('quizzes') || [];
+    const allScenarios = i18n.getContent('scenarios') || [];
+
+    if (!tokens.length) {
+        return {
+            totalTopics: roadmapData.levels.reduce((sum, level) => sum + level.topics.length, 0),
+            totalMatches: 0,
+            groups: roadmapData.levels.map(level => ({
+                level,
+                topics: level.topics.map((topic, topicIndex) => ({
+                    topic,
+                    topicIndex,
+                    matchCount: 0
+                })),
+                matchCount: 0
+            }))
+        };
+    }
+
+    const groups = [];
+    let totalTopics = 0;
+    let totalMatches = 0;
+
+    roadmapData.levels.forEach(level => {
+        const levelContentArray = i18n.getContent(level.id) || [];
+        const matchingTopics = [];
+        let levelMatchCount = 0;
+
+        level.topics.forEach((topic, topicIndex) => {
+            const content = levelContentArray[topicIndex] || null;
+            const topicQuizzes = allQuizzes.filter(q => q.level === level.id && q.topicIndex === topicIndex);
+            const topicScenarios = allScenarios.filter(s => s.level === level.id && s.topicIndex === topicIndex);
+            const searchText = buildTopicSearchText(level, topic, topicIndex, content, topicQuizzes, topicScenarios);
+
+            if (!tokens.every(token => searchText.includes(token))) return;
+
+            const matchCount = countSearchMatches(searchText, tokens);
+            matchingTopics.push({ topic, topicIndex, matchCount });
+            levelMatchCount += matchCount;
+            totalTopics++;
+            totalMatches += matchCount;
+        });
+
+        if (matchingTopics.length > 0) {
+            groups.push({
+                level,
+                topics: matchingTopics,
+                matchCount: levelMatchCount
+            });
+        }
+    });
+
+    return { groups, totalTopics, totalMatches };
+}
+
+function restoreSearchFocus(selectionStart, selectionEnd) {
+    const input = document.getElementById(searchInputId);
+    if (!input) return;
+
+    try {
+        input.focus({ preventScroll: true });
+    } catch (error) {
+        input.focus();
+    }
+
+    if (typeof selectionStart === 'number' && typeof selectionEnd === 'number' && typeof input.setSelectionRange === 'function') {
+        try {
+            input.setSelectionRange(selectionStart, selectionEnd);
+        } catch (error) {}
+    }
+}
+
+function updateSearchHighlights() {
+    const main = document.getElementById('mainContent');
+    applySearchHighlights(main, searchState.tokens);
+}
+
+function setSearchQuery(query) {
+    const input = document.getElementById(searchInputId);
+    const shouldRestoreFocus = input && document.activeElement === input;
+    const selectionStart = shouldRestoreFocus ? input.selectionStart : null;
+    const selectionEnd = shouldRestoreFocus ? input.selectionEnd : null;
+
+    searchState.query = typeof query === 'string' ? query : '';
+    searchState.tokens = tokenizeSearchQuery(searchState.query);
+
+    renderSidebar();
+    updateSearchHighlights();
+
+    if (shouldRestoreFocus) {
+        restoreSearchFocus(selectionStart, selectionEnd);
+    }
+}
+
+function clearSearch() {
+    setSearchQuery('');
+    restoreSearchFocus(0, 0);
 }
 
 function updateStaticTexts() {
@@ -242,35 +551,94 @@ function showNotification(message) {
 // ════════════════════════════════════════════════
 function renderSidebar() {
     const nav = document.getElementById('sidebarNav');
-    nav.innerHTML = roadmapData.levels.map(level => {
-        const completed = level.topics.filter(t => t.completed).length;
-        const total = level.topics.length;
-        return `
-            <div class="level-group">
-                <div class="level-group-header" onclick="toggleLevelGroup('${level.id}')">
-                    <span>${t(level.name)} <span class="level-group-progress">(${completed}/${total})</span></span>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="level-group-topics" id="topics-${level.id}">
-                    ${level.topics.map((topic, idx) => `
-                        <div class="topic-nav-item ${topic.completed ? 'completed' : ''}"
-                             id="nav-${level.id}-${idx}"
-                             onclick="showTopic('${level.id}', ${idx})">
-                            <span class="status-dot"></span>
-                            <span class="topic-name">${topicLabel(topic.name, level.id, idx)}</span>
-                        </div>
-                    `).join('')}
-                </div>
+    if (!nav) return;
+
+    const previousScrollTop = nav.scrollTop;
+    const activeElement = document.activeElement;
+    const wasSearchFocused = activeElement && activeElement.id === searchInputId;
+    const selectionStart = wasSearchFocused ? activeElement.selectionStart : null;
+    const selectionEnd = wasSearchFocused ? activeElement.selectionEnd : null;
+    const searchResults = getSidebarSearchResults(searchState.tokens);
+    const query = searchState.query.trim();
+    const hasSearch = searchState.tokens.length > 0;
+
+    nav.innerHTML = `
+        <div class="sidebar-search">
+            <label class="sidebar-search-label" for="${searchInputId}">${t('search.label')}</label>
+            <div class="sidebar-search-row">
+                <input
+                    type="search"
+                    id="${searchInputId}"
+                    class="sidebar-search-input"
+                    value="${escapeHtml(searchState.query)}"
+                    placeholder="${escapeHtml(t('search.placeholder'))}"
+                    aria-label="${escapeHtml(t('search.label'))}"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    oninput="setSearchQuery(this.value)"
+                    onkeydown="if (event.key === 'Escape') { clearSearch(); event.preventDefault(); }">
+                <button class="sidebar-search-clear" type="button" onclick="clearSearch()" ${hasSearch ? '' : 'disabled'}>${t('search.clear')}</button>
             </div>
-        `;
-    }).join('');
+            <div class="sidebar-search-summary ${hasSearch ? (searchResults.totalTopics > 0 ? 'has-results' : 'no-results') : ''}" aria-live="polite" aria-atomic="true">
+                ${hasSearch
+                    ? (searchResults.totalTopics > 0
+                        ? escapeHtml(t('search.summary', searchResults.totalTopics, searchResults.totalMatches))
+                        : escapeHtml(t('search.noResults', query)))
+                    : escapeHtml(t('search.help'))}
+            </div>
+        </div>
+        ${searchResults.groups.length > 0
+            ? searchResults.groups.map(levelGroup => {
+                const completed = levelGroup.level.topics.filter(topic => topic.completed).length;
+                const total = levelGroup.level.topics.length;
+                const visibleCount = levelGroup.topics.length;
+                const progressLabel = hasSearch
+                    ? t('search.topicCount', visibleCount)
+                    : `(${completed}/${total})`;
+                const isCollapsed = !hasSearch && collapsedLevelGroups.has(levelGroup.level.id);
+                return `
+                    <div class="level-group">
+                        <div class="level-group-header ${isCollapsed ? 'collapsed' : ''}" onclick="toggleLevelGroup('${levelGroup.level.id}')">
+                            <span>${hasSearch ? renderHighlightedText(t(levelGroup.level.name), searchState.tokens) : escapeHtml(t(levelGroup.level.name))} <span class="level-group-progress">${progressLabel}</span></span>
+                            <span class="chevron">▼</span>
+                        </div>
+                        <div class="level-group-topics ${isCollapsed ? 'collapsed' : ''}" id="topics-${levelGroup.level.id}">
+                            ${levelGroup.topics.map(({ topic, topicIndex, matchCount }) => `
+                                <div class="topic-nav-item ${topic.completed ? 'completed' : ''} ${(currentView.levelId === levelGroup.level.id && currentView.topicIndex === topicIndex) ? 'active' : ''}"
+                                     id="nav-${levelGroup.level.id}-${topicIndex}"
+                                     onclick="showTopic('${levelGroup.level.id}', ${topicIndex})">
+                                    <span class="status-dot"></span>
+                                    <span class="topic-name">${hasSearch ? renderHighlightedText(topicLabel(topic.name, levelGroup.level.id, topicIndex), searchState.tokens) : escapeHtml(topicLabel(topic.name, levelGroup.level.id, topicIndex))}</span>
+                                    ${hasSearch ? `<span class="topic-match-count">${matchCount}</span>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('')
+            : `
+                <div class="sidebar-search-empty">
+                    <strong>${escapeHtml(t('search.noResults', query))}</strong>
+                    <span>${escapeHtml(t('search.help'))}</span>
+                </div>
+            `}
+    `;
+
+    nav.scrollTop = previousScrollTop;
+    if (wasSearchFocused) {
+        restoreSearchFocus(selectionStart, selectionEnd);
+    }
 }
 
 function toggleLevelGroup(levelId) {
     const topics = document.getElementById(`topics-${levelId}`);
     const header = topics.previousElementSibling;
-    topics.classList.toggle('collapsed');
+    const isCollapsed = topics.classList.toggle('collapsed');
     header.classList.toggle('collapsed');
+
+    if (isCollapsed) collapsedLevelGroups.add(levelId);
+    else collapsedLevelGroups.delete(levelId);
 }
 
 function toggleSidebar() {
@@ -352,6 +720,8 @@ function showWelcome() {
             </div>
         </div>
     `;
+
+    updateSearchHighlights();
 }
 
 // ════════════════════════════════════════════════
@@ -384,6 +754,7 @@ function showTopic(levelId, topicIndex) {
                 <p style="color: var(--color-text-secondary);">${t('topic.comingSoon')}</p>
             </div>
         `;
+        updateSearchHighlights();
         return;
     }
 
@@ -473,6 +844,7 @@ function showTopic(levelId, topicIndex) {
     // Attach quiz event listeners
     attachQuizListeners(topicQuizzes);
     attachScenarioListeners(topicScenarios);
+    updateSearchHighlights();
 }
 
 function getNextTopicButton(levelId, topicIndex) {

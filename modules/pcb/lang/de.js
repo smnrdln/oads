@@ -20,6 +20,13 @@ i18n.registerLanguage('de', 'Deutsch', {
 
     // ── Sidebar ──
     'sidebar.title': '📚 Kursübersicht',
+    'search.label': '🔎 Inhalte suchen',
+    'search.placeholder': 'Lektionen, Übungen, Szenarien und Quellen durchsuchen',
+    'search.clear': 'Löschen',
+    'search.help': 'Suche im Lektionstext, in Kernpunkten, Übungen, Szenarien und Quellen.',
+    'search.summary': '%s Themen gefunden · %s Treffer',
+    'search.noResults': 'Keine Treffer für "%s"',
+    'search.topicCount': '%s Themen',
 
     // ── Level Names ──
     'level.level1.name': 'Stufe 1: Anfänger',

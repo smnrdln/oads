@@ -13,6 +13,13 @@ i18n.registerLanguage('en', 'English', {
 
     // ── Sidebar ──
     'sidebar.title': '📚 Course Outline',
+    'search.label': '🔎 Search Content',
+    'search.placeholder': 'Search lessons, quizzes, scenarios, and resources',
+    'search.clear': 'Clear',
+    'search.help': 'Search across lesson text, key points, quizzes, scenarios, and resources.',
+    'search.summary': '%s topics matched · %s matches',
+    'search.noResults': 'No matches for "%s"',
+    'search.topicCount': '%s topics',
 
     // ── Level Names ──
     'level.level1.name': 'Level 1: Beginner',
