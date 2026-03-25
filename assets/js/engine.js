@@ -26,6 +26,10 @@ let currentView = { levelId: null, topicIndex: null };
 
 const themeStorageKey = 'appTheme';
 
+const _storageKey = (window.MODULE_CONFIG && window.MODULE_CONFIG.storageKey)
+    ? window.MODULE_CONFIG.storageKey
+    : 'electronicsProgress';
+
 function getSystemTheme() {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
@@ -43,7 +47,7 @@ function applyTheme(theme) {
 
 function setTheme(theme) {
     applyTheme(theme);
-    localStorage.setItem(themeStorageKey, theme);
+    try { localStorage.setItem(themeStorageKey, theme); } catch (e) {}
     updateThemeToggle();
 }
 
@@ -113,9 +117,26 @@ function updateStaticTexts() {
 // Persistence
 // ════════════════════════════════════════════════
 function loadProgress() {
-    const saved = localStorage.getItem('electronicsProgress');
+    let saved;
+    try {
+        saved = localStorage.getItem(_storageKey);
+    } catch (e) {
+        saved = null;
+    }
     if (saved) {
-        userProgress = JSON.parse(saved);
+        try {
+            userProgress = JSON.parse(saved);
+        } catch (e) {
+            userProgress = {
+                completedTopics: [],
+                xp: 0,
+                level: 1,
+                quizzesCompleted: 0,
+                scenariosCompleted: 0,
+                streak: 0,
+                achievements: []
+            };
+        }
         roadmapData.levels.forEach(level => {
             level.topics.forEach(topic => {
                 if (userProgress.completedTopics.includes(`${level.id}_${topic.name}`)) {
@@ -132,7 +153,9 @@ function loadProgress() {
 }
 
 function saveProgress() {
-    localStorage.setItem('electronicsProgress', JSON.stringify(userProgress));
+    try {
+        localStorage.setItem(_storageKey, JSON.stringify(userProgress));
+    } catch (e) {}
 }
 
 // ════════════════════════════════════════════════
@@ -278,7 +301,9 @@ const systemThemeQuery = window.matchMedia ? window.matchMedia('(prefers-color-s
 
 if (systemThemeQuery && typeof systemThemeQuery.addEventListener === 'function') {
     systemThemeQuery.addEventListener('change', () => {
-        if (!localStorage.getItem(themeStorageKey)) {
+        let savedTheme;
+        try { savedTheme = localStorage.getItem(themeStorageKey); } catch (e) { savedTheme = null; }
+        if (!savedTheme) {
             applyTheme(getSystemTheme());
             updateThemeToggle();
         }
@@ -718,8 +743,8 @@ function completeTopic(levelId, topicName) {
 // Visual Reference Modal (iframe overlay)
 // ════════════════════════════════════════════════
 function openVisualRef(url) {
-    // Open in a new tab directly instead of an iframe to bypass the repeated 
-    // Google cookie consent screen. Modern browsers block 3rd-party cookies 
+    // Open in a new tab directly instead of an iframe to bypass the repeated
+    // Google cookie consent screen. Modern browsers block 3rd-party cookies
     // in iframes, causing Google to ask for cookie permission every single time.
     window.open(url, '_blank', 'noopener,noreferrer');
 }
@@ -740,7 +765,11 @@ document.addEventListener('keydown', (e) => {
 // ════════════════════════════════════════════════
 // Init
 // ════════════════════════════════════════════════
-applyTheme(localStorage.getItem(themeStorageKey) || getSystemTheme());
+(function () {
+    let savedTheme;
+    try { savedTheme = localStorage.getItem(themeStorageKey); } catch (e) { savedTheme = null; }
+    applyTheme(savedTheme || getSystemTheme());
+})();
 loadProgress();
 updateStaticTexts();
 updateProgressDisplay();

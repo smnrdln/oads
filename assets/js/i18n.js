@@ -8,7 +8,10 @@ const i18n = (() => {
     const localizedFallbackCache = {};
     const loadedContentFiles = {}; // { 'de': Set{'level1','level2',...} }
     const languages = [];          // [{ code, label }]
-    let currentLang = localStorage.getItem('appLanguage') || 'en';
+    let currentLang = (function () {
+        try { return localStorage.getItem('appLanguage') || 'en'; }
+        catch (e) { return 'en'; }
+    })();
     const fallbackLang = 'en';
 
     // ── Document language / RTL ──────────────────────────────────────────────
@@ -181,7 +184,7 @@ const i18n = (() => {
             return;
         }
         currentLang = code;
-        localStorage.setItem('appLanguage', code);
+        try { localStorage.setItem('appLanguage', code); } catch (e) {}
         applyDocumentLanguage(code);
 
         // Load content files for this language if not already loaded, then render.
