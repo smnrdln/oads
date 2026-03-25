@@ -20,6 +20,7 @@ i18n.registerLanguage('de', 'Deutsch', {
 
     // ── Sidebar ──
     'sidebar.title': '📚 Kursübersicht',
+    'sidebar.menu': 'Menü',
     'search.label': '🔎 Inhalte suchen',
     'search.placeholder': 'Lektionen, Übungen, Szenarien und Quellen durchsuchen',
     'search.clear': 'Löschen',

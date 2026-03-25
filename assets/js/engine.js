@@ -418,6 +418,18 @@ function updateStaticTexts() {
     const sidebarTitle = document.getElementById('sidebarTitle');
     if (sidebarTitle) sidebarTitle.textContent = t('sidebar.title');
 
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    if (sidebarToggle) {
+        sidebarToggle.setAttribute('aria-label', t('sidebar.menu'));
+        sidebarToggle.setAttribute('title', t('sidebar.menu'));
+    }
+
+    const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+    if (mobileSidebarToggle) {
+        mobileSidebarToggle.setAttribute('aria-label', t('sidebar.menu'));
+        mobileSidebarToggle.setAttribute('title', t('sidebar.menu'));
+    }
+
     updateThemeToggle();
     document.title = t('app.title');
 }
@@ -642,7 +654,17 @@ function toggleLevelGroup(levelId) {
 }
 
 function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    const isOpen = sidebar.classList.toggle('open');
+    const expanded = isOpen ? 'true' : 'false';
+
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    if (sidebarToggle) sidebarToggle.setAttribute('aria-expanded', expanded);
+
+    const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+    if (mobileSidebarToggle) mobileSidebarToggle.setAttribute('aria-expanded', expanded);
 }
 
 function setActiveNav(levelId, topicIndex) {

@@ -120,11 +120,15 @@
         </div>
     </header>
 
+    <button class="mobile-toggle" id="mobileSidebarToggle" type="button" onclick="toggleSidebar()"
+        aria-controls="sidebar" aria-expanded="false" aria-label="Menu" title="Menu">☰</button>
+
     <div class="app-layout">
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h2 id="sidebarTitle">📚 Course Outline</h2>
-                <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+                <button class="sidebar-toggle" id="sidebarToggle" type="button" onclick="toggleSidebar()"
+                    aria-controls="sidebar" aria-expanded="false">☰</button>
             </div>
             <nav class="sidebar-nav" id="sidebarNav">
                 <div class="sidebar-fallback">

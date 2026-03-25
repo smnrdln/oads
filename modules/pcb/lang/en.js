@@ -13,6 +13,7 @@ i18n.registerLanguage('en', 'English', {
 
     // ── Sidebar ──
     'sidebar.title': '📚 Course Outline',
+    'sidebar.menu': 'Menu',
     'search.label': '🔎 Search Content',
     'search.placeholder': 'Search lessons, quizzes, scenarios, and resources',
     'search.clear': 'Clear',

@@ -339,6 +339,10 @@ body {
     cursor: pointer;
 }
 
+.mobile-toggle {
+    display: none;
+}
+
 .sidebar-nav {
     overflow-y: auto;
     flex: 1;
