@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Modern computer vision course: images and classical filters, CNNs, detection, segmentation, transformers, video and 3D, diffusion and NeRF, VLMs, deployment, and capstone design—with lessons, quizzes, scenarios, English/German.">
+    <meta name="keywords"
+        content="computer vision, deep learning, CNN, object detection, segmentation, ViT, diffusion, CLIP, OpenCV, PyTorch, training">
+    <meta name="author" content="Saman Ardalan">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-adsense-account" content="ca-pub-4757211359193207">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../assets/icons/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../../assets/icons/android-chrome-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="../../assets/icons/site.webmanifest">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Modern Computer Vision Trainer">
+    <meta property="og:description"
+        content="Learn classification, detection, segmentation, transformers, generative models, and production vision systems through structured lessons and exercises.">
+    <meta property="og:site_name" content="Modern Computer Vision Trainer">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Modern Computer Vision Trainer">
+    <meta name="twitter:description"
+        content="Interactive computer vision course with progress tracking, quizzes, scenarios, English/German.">
+    <title>👁️ Modern Computer Vision Trainer</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4757211359193207"
+        crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Modern Computer Vision Trainer",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and a modern web browser",
+            "description": "Interactive computer vision curriculum from pixels to deployment: CNNs, detection, segmentation, ViTs, video, 3D, diffusion, VLMs, robustness, and MLOps.",
+            "inLanguage": ["en", "de"],
+            "isAccessibleForFree": true,
+            "author": { "@type": "Person", "name": "Saman Ardalan" },
+            "codeRepository": "https://github.com/smnrdln/oads",
+            "keywords": "computer vision, deep learning, CNN, ViT, diffusion, CLIP, segmentation"
+        }
+    </script>
+    <script>
+        window.MODULE_CONFIG = {
+            id: "computervision",
+            storageKey: "computervisionProgress"
+        };
+    </script>
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem('appTheme');
+                const theme = savedTheme === 'light' || savedTheme === 'dark'
+                    ? savedTheme
+                    : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.style.colorScheme = theme;
+            } catch (error) {
+                document.documentElement.dataset.theme = 'dark';
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://openacademy.space/modules/computervision/">
+    <link rel="stylesheet" href="../../assets/css/engine.css">
+    <link rel="stylesheet" href="../../assets/css/oads-ads.css">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <div class="app-logo">
+                <img src="../../assets/logo/oads-transparent-256.png"
+                    srcset="../../assets/logo/oads-transparent-256.png 1x, ../../assets/logo/oads-transparent-512.png 2x"
+                    alt="Open Academy Dot Space logo" width="56" height="56">
+            </div>
+            <h1 id="appTitle">👁️ Modern Computer Vision Trainer</h1>
+            <a class="repo-link" href="https://github.com/smnrdln/oads" target="_blank" rel="noopener noreferrer"
+                aria-label="Open the GitHub repository for this project">GitHub</a>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle" type="button" onclick="toggleTheme()"></button>
+                <div class="lang-switcher-wrap">
+                    <select id="langSwitcher" class="lang-switcher" onchange="i18n.setLanguage(this.value)"></select>
+                </div>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="header-stat">
+                <div class="progress-circle" id="overallProgress"><span>0%</span></div>
+                <div class="header-stat-text">
+                    <strong id="headerProgressLabel">Progress</strong><br>
+                    <span id="completedTopics">0</span> / <span id="totalTopics">0</span>
+                </div>
+            </div>
+            <div class="header-stat">
+                <div class="stat-value-sm" id="xpDisplay">0</div>
+                <div class="header-stat-text">
+                    <strong id="headerXPLabel">XP</strong><br>
+                    <span id="levelDisplay">Level 1</span>
+                </div>
+            </div>
+            <div class="header-stat">
+                <div class="stat-value-sm" id="streakCount">0</div>
+                <div class="header-stat-text"><strong id="headerStreakLabel">Streak</strong></div>
+            </div>
+        </div>
+    </header>
+
+    <button class="mobile-toggle" id="mobileSidebarToggle" type="button" onclick="toggleSidebar()"
+        aria-controls="sidebar" aria-expanded="false" aria-label="Menu" title="Menu">☰</button>
+
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 id="sidebarTitle">📚 Course Outline</h2>
+                <button class="sidebar-toggle" id="sidebarToggle" type="button" onclick="toggleSidebar()"
+                    aria-controls="sidebar" aria-expanded="false">☰</button>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <div class="sidebar-fallback">
+                    <p>This trainer covers a four-level path from pixels to production vision systems.</p>
+                    <ul>
+                        <li>Level 1: Images, classical CV, neural basics, CNNs, training metrics</li>
+                        <li>Level 2: ResNets, transfer learning, classification, detection, segmentation</li>
+                        <li>Level 3: ViTs, self-supervision, video, 3D, diffusion, NeRF, efficient models</li>
+                        <li>Level 4: VLMs, editing, robustness, deployment, capstone design</li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="oads-module-stage">
+        <main class="main-content" id="mainContent">
+            <div class="welcome-view welcome-view-static">
+                <h2>Welcome to the Modern Computer Vision Trainer</h2>
+                <p>
+                    A structured browser course aligned with a modern CV curriculum: classical image processing,
+                    convolutional networks, detection and segmentation, transformers and generative models, 3D and video,
+                    vision–language models, fairness, and deployment—with quizzes and scenarios.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">Learning Levels</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">29</div>
+                        <div class="stat-label">Topics</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">87</div>
+                        <div class="stat-label">Exercises</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">29</div>
+                        <div class="stat-label">Scenarios</div>
+                    </div>
+                </div>
+
+                <div class="static-summary">
+                    <h3>What this trainer includes</h3>
+                    <ul>
+                        <li>digital images, filtering, edges, classical features, and NN fundamentals</li>
+                        <li>CNNs, training protocols, ResNets, transfer learning, detection, FPN, modern detectors</li>
+                        <li>semantic, instance, and panoptic segmentation</li>
+                        <li>ViTs, self-supervised learning, optical flow, video models, depth, VAE/diffusion, NeRF, efficiency</li>
+                        <li>CLIP-style VLMs, image editing, robustness, production serving, end-to-end capstone</li>
+                        <li>English and German; local progress in the browser</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <aside class="oads-module-ad-rail" aria-label="Advertisement">
+            <div class="oads-ad-shell" data-oads-slot="moduleRail">
+                <span class="oads-ad-label">Ad</span>
+                <div class="oads-ad-inner"></div>
+            </div>
+        </aside>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="site-footer-links">
+            <span>Open Academy module: Modern Computer Vision Trainer</span>
+            <a href="https://openacademy.space/">Open Academy</a>
+            <a href="https://openacademy.space/privacy.html">Privacy Policy</a>
+            <a href="https://github.com/smnrdln/oads" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/smnrdln/oads/issues" target="_blank"
+                rel="noopener noreferrer">Contact</a>
+        </div>
+    </footer>
+
+    <noscript>
+        <div class="noscript-banner">
+            JavaScript is required for the interactive trainer UI. The static overview above remains available, and the
+            full open-source project is linked in the footer.
+        </div>
+    </noscript>
+
+    <script src="../../assets/js/i18n.js"></script>
+    <script src="lang/en.js"></script>
+    <script src="lang/de.js"></script>
+    <script src="lang/manifest.js"></script>
+    <script src="level1.js"></script>
+    <script src="level2.js"></script>
+    <script src="level3.js"></script>
+    <script src="level4.js"></script>
+    <script src="exercises.js"></script>
+    <script src="scenarios.js"></script>
+    <script src="levels.js"></script>
+    <script src="../../assets/js/engine.js"></script>
+    <script src="../../assets/js/oads-ads-config.js"></script>
+    <script src="../../assets/js/oads-ads.js"></script>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 /**
  * Single config for AdSense — include oads-ads-config.js + oads-ads.js on every site HTML page.
  *
- * Pages today: index.html + privacy.html use data-oads-slot="siteRail"; modules/pcb uses "moduleRail".
+ * Pages today: index.html + privacy.html use data-oads-slot="siteRail"; modules (pcb, robotics, …) use "moduleRail".
  *
  * - Set defaultSlot to one numeric ad unit ID from AdSense to fill every region (easiest).
  * - Or leave defaultSlot empty and set slots.siteRail / slots.moduleRail (and add keys for new modules).
