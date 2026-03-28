@@ -90,6 +90,8 @@ i18n.registerContent('en', 'level2', [
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=instrumentation+amplifier+circuit+diagram+INA128&udm=2')">🔍 See: Instrumentation Amps</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Wheatstone+bridge+strain+gauge+load+cell+circuit&udm=2')">📷 See: Wheatstone Bridge</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=active+low+pass+filter+Sallen+Key+op+amp+circuit&udm=2')">🔽 See: Active Filters</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Bode+plot+gain+phase+margin+op+amp&udm=2')">📈 See: Bode Plots</button>
             </div>
         `,
     },
@@ -196,8 +198,12 @@ i18n.registerContent('en', 'level2', [
             </ul>
 
             <div class="visual-ref-links">
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=FPGA+development+board+JTAG+debug+SPI+flash&udm=2')">🔍 See: FPGA Dev Boards</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=logic+level+shifter+BSS138+MOSFET+circuit+3.3V+5V&udm=2')">📷 See: Level Shifters</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=logic+level+shifter+BSS138+MOSFET+circuit+3.3V+5V&udm=2')">🔍 See: Level Shifters</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=W25Q128+SPI+flash+memory+chip+PCB&udm=2')">💾 See: SPI Flash</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=74HC595+shift+register+wiring+LED+arduino&udm=2')">🔢 See: 74HC595 Shift Register</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=MCU+crystal+oscillator+load+capacitor+PCB+layout&udm=2')">⏰ See: Crystal Layout</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=switch+debounce+RC+circuit+Schmitt+trigger&udm=2')">🔘 See: Debounce Circuits</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=finite+state+machine+diagram+robot+control&udm=2')">🔄 See: State Machine Diagrams</button>
             </div>
         `,
         relatedTopics: [{ level: 'level1', index: 3, label: 'Digital Logic Basics' }, { level: 'level3', index: 3, label: 'FPGA/SoC Hardware Design' }],
@@ -359,8 +365,11 @@ i18n.registerContent('en', 'level2', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=buck+boost+LDO+voltage+regulator+PCB+circuit+diagram&udm=2')">🔍 See: Voltage Regulators</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=buck+converter+PCB+layout+inductor+capacitor&udm=2')">⚡ See: Buck Converter Layout</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=H-bridge+motor+driver+MOSFET+circuit+diagram&udm=2')">📷 See: H-Bridge Drivers</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=TVS+diode+protection+circuit+ESD+PCB&udm=2')">⚡ See: TVS Protection</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=LiPo+battery+BMS+protection+module+PCB&udm=2')">🔋 See: LiPo BMS</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=current+sense+shunt+amplifier+INA+PCB&udm=2')">📊 See: Current Sense</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=TVS+diode+protection+circuit+ESD+PCB&udm=2')">🛡️ See: TVS Protection</button>
             </div>
         `,
         relatedTopics: [{ level: 'level1', index: 0, label: 'Math & Physics Basics' }, { level: 'level3', index: 2, label: 'Power Integrity & Advanced Power' }],
@@ -548,7 +557,11 @@ i18n.registerContent('en', 'level2', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=STM32+minimal+circuit+schematic+decoupling+bypass+capacitors&udm=2')">🔍 See: MCU Circuits</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=SWD+connector+TC2050+debug+header+PCB&udm=2')">🔌 See: SWD Debug Headers</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=crystal+oscillator+load+capacitor+PCB+layout&udm=2')">📷 See: Crystal Circuits</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=ADC+input+RC+filter+op+amp+buffer+circuit&udm=2')">📊 See: ADC Front-End</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=quadrature+encoder+A+B+signals+oscilloscope&udm=2')">🎛️ See: Quadrature Encoders</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=ESP32+STM32+RP2040+development+board+photo&udm=2')">🧩 See: MCU Dev Boards</button>
             </div>
         `,
     },
@@ -718,7 +731,10 @@ i18n.registerContent('en', 'level2', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=SPI+I2C+UART+CAN+bus+wiring+diagram+comparison&udm=2')">🔍 See: Communication Buses</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=CAN+transceiver+TJA1051+termination+PCB&udm=2')">🚗 See: CAN Transceivers</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=RS-485+differential+pair+network+termination+diagram&udm=2')">📷 See: RS-485 Networks</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=USB+differential+pair+90+ohm+PCB+routing&udm=2')">🔌 See: USB PCB Routing</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Ethernet+magnetics+RJ45+PCB+layout&udm=2')">🌐 See: Ethernet / RJ45</button>
             </div>
         `,
     },
@@ -883,8 +899,11 @@ i18n.registerContent('en', 'level2', [
             </ul>
 
             <div class="visual-ref-links">
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+layout+decoupling+capacitor+placement+ground+plane&udm=2')">🔍 See: PCB Layout Best Practices</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+layout+decoupling+capacitor+placement+ground+plane&udm=2')">🔍 See: Decoupling & Planes</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=4+layer+PCB+stackup+signal+ground+power+routing&udm=2')">📷 See: 4-Layer Stackups</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+differential+pair+length+match+routing&udm=2')">〰️ See: Differential Pairs</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=thermal+vias+QFN+heatsink+copper+pour+PCB&udm=2')">🔥 See: Thermal Vias</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=IPC+trace+width+current+capacity+chart&udm=2')">📐 See: Trace Width vs Current</button>
             </div>
         `,
     },
@@ -1049,8 +1068,11 @@ i18n.registerContent('en', 'level2', [
             </ul>
 
             <div class="visual-ref-links">
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+panelization+V-score+tab+routing+manufacturing&udm=2')">🔍 See: PCB Panelization</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=BGA+QFN+reflow+X-ray+inspection+PCB+assembly&udm=2')">📷 See: PCB Assembly Process</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+fiducial+marks+pick+and+place&udm=2')">🎯 See: Fiducials</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=solder+paste+stencil+SMD+PCB+assembly&udm=2')">📋 See: Stencil & Paste</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=IPC-7351+SMD+footprint+pad+toe+heel&udm=2')">📐 See: SMD Footprints</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+panelization+V-score+tab+routing+manufacturing&udm=2')">🔍 See: Panelization</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=BGA+QFN+reflow+X-ray+inspection+PCB+assembly&udm=2')">📷 See: Assembly & X-Ray</button>
             </div>
         `,
     },
@@ -1222,8 +1244,12 @@ i18n.registerContent('en', 'level2', [
             </ul>
 
             <div class="visual-ref-links">
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=robot+motor+controller+PCB+custom+design&udm=2')">🔍 See: Robot Controller Boards</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=line+following+robot+PCB+sensor+array&udm=2')">📷 See: Line Follower Robots</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=STM32+blue+pill+minimal+custom+PCB&udm=2')">🔍 See: STM32 Boards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=DRV8871+motor+driver+module+PCB&udm=2')">🚗 See: Motor Driver PCBs</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=IMU+sensor+fusion+PCB+MPU6050+LSM6DS3&udm=2')">📡 See: IMU Sensor Boards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=TP4056+LiPo+charger+module+PCB&udm=2')">🔋 See: Li-Ion Charger Modules</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=robot+motor+controller+PCB+custom+design&udm=2')">🤖 See: Robot Controllers</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=line+following+robot+PCB+sensor+array&udm=2')">📷 See: Line Followers</button>
             </div>
         `,
     }

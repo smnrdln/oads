@@ -31,6 +31,8 @@ i18n.registerContent('en', 'level1', [
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Ohms+law+circuit+diagram+voltage+current+resistance&udm=2')">🔍 See: Ohm's Law Circuits</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=series+parallel+circuit+diagram+educational&udm=2')">📷 See: Series vs Parallel</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Kirchhoff+voltage+current+law+circuit+diagram&udm=2')">⚡ See: Kirchhoff's Laws</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=AC+sine+wave+RMS+peak+voltage+diagram&udm=2')">🌊 See: AC & Sine Waves</button>
             </div>
         `,
         keyPoints: ['Master Ohm\'s Law: V = I × R for any circuit calculation', 'Calculate series/parallel resistance and voltage divider outputs', 'Distinguish DC (constant) from AC (frequency, RMS) concepts'],
@@ -91,6 +93,8 @@ i18n.registerContent('en', 'level1', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=resistor+capacitor+inductor+diode+real+photo+labeled&udm=2')">🔍 See: Electronic Components</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=ceramic+vs+electrolytic+capacitor+comparison+photo&udm=2')">🔋 See: Capacitor Types</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=LED+diode+Zener+Schottky+symbol+photo&udm=2')">💡 See: Diode & LED Types</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=MOSFET+BJT+transistor+pinout+diagram&udm=2')">📷 See: Transistor Types</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=resistor+color+code+chart+4+band&udm=2')">🎨 See: Color Code Chart</button>
             </div>
@@ -146,7 +150,9 @@ i18n.registerContent('en', 'level1', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=RC+low+pass+high+pass+filter+circuit+diagram&udm=2')">🔍 See: RC Filter Circuits</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=voltage+divider+circuit+diagram+ADC+sensor&udm=2')">📐 See: Voltage Dividers</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=op+amp+inverting+non+inverting+buffer+circuit+diagram&udm=2')">📷 See: Op-Amp Circuits</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=current+sense+shunt+resistor+amplifier+circuit&udm=2')">📊 See: Current Sensing</button>
             </div>
         `,
         keyPoints: ['Calculate RC filter cutoff: f_c = 1/(2πRC)', 'Scale sensor voltage to ADC range using voltage dividers', 'Configure non-inverting op-amp gain: 1 + (R_f/R_in)'],
@@ -193,8 +199,10 @@ i18n.registerContent('en', 'level1', [
             </ul>
 
             <div class="visual-ref-links">
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=logic+gates+AND+OR+NOT+truth+table+diagram&udm=2')">🔍 See: Logic Gates</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=3.3V+5V+TTL+CMOS+logic+levels+diagram&udm=2')">🔍 See: Logic Levels</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=logic+gates+AND+OR+NOT+truth+table+diagram&udm=2')">🚪 See: Logic Gates</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=D+flip+flop+shift+register+74HC595+diagram&udm=2')">📷 See: Flip-Flops & Registers</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=binary+hexadecimal+conversion+chart+embedded&udm=2')">🔢 See: Binary & Hex</button>
             </div>
         `,
         keyPoints: ['Distinguish 5V TTL vs 3.3V CMOS logic level thresholds', 'Convert between binary, decimal, and hexadecimal', 'Use D flip-flops and shift registers (74HC595) for data storage']
@@ -262,8 +270,13 @@ i18n.registerContent('en', 'level1', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=breadboard+layout+connections+diagram+explained&udm=2')">🔍 See: Breadboard Layout</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=oscilloscope+screen+waveform+PWM+signal&udm=2')">📷 See: Oscilloscope Signals</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=digital+multimeter+how+to+measure+voltage+current&udm=2')">🔧 See: Multimeter Usage</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=digital+multimeter+bench+handheld+photo&udm=2')">📏 See: Multimeters</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=oscilloscope+probe+ground+clip+measurement+setup&udm=2')">📊 See: Scope & Probes</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=oscilloscope+screen+waveform+PWM+signal&udm=2')">📷 See: Oscilloscope Waveforms</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=logic+analyzer+SPI+I2C+decode+screen+Saleae&udm=2')">🔍 See: Logic Analyzers</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=LTspice+circuit+simulation+schematic+screenshot&udm=2')">⚡ See: LTspice</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Falstad+circuit+simulator+applet+screenshot&udm=2')">🌐 See: Falstad Simulator</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=digital+multimeter+how+to+measure+voltage+current&udm=2')">🔧 See: Multimeter How-To</button>
             </div>
         `,
         keyPoints: ['Measure voltage in parallel, current in series, resistance with power off', 'Use oscilloscope triggering to capture PWM and communication signals', 'Simulate circuits in LTspice or Falstad before building hardware'],
@@ -339,6 +352,12 @@ i18n.registerContent('en', 'level1', [
                 <li><strong>Silkscreen:</strong> White component labels/text</li>
                 <li><strong>Surface Finish:</strong> Protect copper (HASL, ENIG)</li>
             </ol>
+
+            <div class="visual-ref-links">
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=schematic+net+label+reference+designator+KiCad+example&udm=2')">🔌 See: Nets & Labels</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+trace+width+clearance+annular+ring+diagram&udm=2')">⚙️ See: Design Rules</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+manufacturing+etching+drilling+solder+mask+process&udm=2')">🏭 See: PCB Fabrication</button>
+            </div>
         `,
         keyPoints: ['Distinguish traces, pads, vias, and copper pours on a PCB', 'Set minimum trace width (6-8 mil) and clearance per fab capability', 'Map schematic symbols to physical footprints (SMD vs through-hole)'],
         relatedTopics: [{ level: 'level1', index: 6, label: 'Beginner EDA Tool Workflow' }, { level: 'level2', index: 5, label: 'Intermediate PCB Layout Techniques' }],
@@ -411,8 +430,12 @@ i18n.registerContent('en', 'level1', [
             <p><strong>Standard Specs:</strong> 2-layer, 1.6mm thick, HASL finish, green solder mask</p>
 
             <div class="visual-ref-links">
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=KiCad+schematic+editor+PCB+layout+screenshot&udm=2')">🔍 See: KiCad Interface</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=KiCad+schematic+editor+PCB+layout+screenshot&udm=2')">🔍 See: KiCad Schematic & PCB</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=KiCad+footprint+editor+library+SMD&udm=2')">📦 See: Footprint Editor</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=KiCad+3D+board+viewer+render&udm=2')">🧊 See: KiCad 3D View</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=KiCad+DRC+design+rule+check+clearance&udm=2')">✅ See: DRC in KiCad</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Gerber+file+viewer+PCB+manufacturing+layers&udm=2')">📷 See: Gerber Files</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=JLCPCB+PCBWay+prototype+boards+photo&udm=2')">🏭 See: Prototype PCBs</button>
             </div>
         `,
         keyPoints: ['Complete the KiCad workflow: schematic → footprints → ERC → layout → DRC → Gerbers', 'Fix all ERC and DRC errors before manufacturing', 'Generate Gerber + drill files and order from JLCPCB/PCBWay']
@@ -495,8 +518,12 @@ i18n.registerContent('en', 'level1', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=555+timer+LED+blinker+circuit+diagram+breadboard&udm=2')">🔍 See: 555 Timer Circuits</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Arduino+STM32+LED+blink+breadboard+circuit&udm=2')">💡 See: MCU LED Circuits</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=HC-SR04+ultrasonic+sensor+wiring+diagram&udm=2')">📡 See: HC-SR04</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Arduino+shield+PCB+custom+motor+driver&udm=2')">📷 See: Arduino Shields</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=MPU6050+IMU+breakout+board+PCB&udm=2')">🔧 See: Sensor Breakout Boards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Raspberry+Pi+Pico+carrier+board+PCB&udm=2')">🎛️ See: Pico Carriers</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=USB+5V+to+3.3V+LDO+power+bank+PCB&udm=2')">⚡ See: USB Power Boards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=MPU6050+IMU+breakout+board+PCB&udm=2')">🔧 See: Sensor Breakouts</button>
             </div>
         `,
         keyPoints: ['Build complete breadboard prototypes before PCB', 'Calculate LED resistors and 555 timer values', 'Order and assemble PCBs from budget fabs']
@@ -586,9 +613,13 @@ i18n.registerContent('en', 'level1', [
             </ul>
 
             <div class="visual-ref-links">
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=temperature+controlled+soldering+iron+station+Hakko&udm=2')">🔥 See: Soldering Stations</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=through+hole+soldering+technique+pad+wire+photo&udm=2')">📐 See: Through-Hole Joints</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=good+solder+joint+vs+bad+cold+joint+PCB+photo&udm=2')">🔍 See: Good vs Bad Joints</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=SMD+drag+soldering+technique+TQFP+IC&udm=2')">📷 See: SMD Soldering</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=reflow+soldering+oven+solder+paste+stencil+PCB&udm=2')">🌊 See: Reflow Process</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=SMD+0805+tombstoning+reflow+photo&udm=2')">📌 See: Tombstoning</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=SMD+drag+soldering+technique+TQFP+IC&udm=2')">📷 See: SMD Drag Soldering</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=solder+wick+braid+desoldering+rework&udm=2')">🔧 See: Desoldering & Wick</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=reflow+soldering+oven+solder+paste+stencil+PCB&udm=2')">🌊 See: Reflow & Stencil</button>
             </div>
         `,
         keyPoints: ['Solder through-hole with heat-both-surfaces technique', 'Use drag soldering for SMD ICs', 'Identify and fix cold joints, bridges, and tombstoning'],

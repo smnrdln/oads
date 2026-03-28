@@ -84,7 +84,9 @@ i18n.registerContent('de', 'level4', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=DDR4+PCIe+high+speed+PCB+routing+layout&udm=2')">🔍 Ansehen: High-Speed-Digital</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCIe+insertion+loss+budget+pre-emphasis+diagram&udm=2')">📊 Ansehen: Link-Verlustbudget</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=BLDC+3+phase+inverter+gate+driver+PCB+schematic&udm=2')">📷 Ansehen: Motor-Umrichter</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=INA240+Kelvin+shunt+current+sense+PCB+layout&udm=2')">📐 Ansehen: Kelvin-Strommessung</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=safety+critical+hardware+redundant+microcontroller+design&udm=2')">⚠️ Ansehen: Safety-Hardware</button>
             </div>
         `,
@@ -150,6 +152,8 @@ i18n.registerContent('de', 'level4', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=eye+diagram+signal+integrity+simulation+jitter&udm=2')">🔍 Ansehen: Augendiagramme</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=vector+network+analyzer+S+parameter+Smith+chart+PCB&udm=2')">📡 Ansehen: VNA & S-Parameter</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PDN+target+impedance+plot+decoupling+capacitor&udm=2')">⚡ Ansehen: PDN-Impedanzkurven</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=TDR+time+domain+reflectometry+impedance+measurement+PCB&udm=2')">📷 Ansehen: TDR-Messung</button>
             </div>
         `,
@@ -209,6 +213,8 @@ i18n.registerContent('de', 'level4', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=3+phase+inverter+schematic+MOSFET+gate+driver+bootstrap&udm=2')">🔍 Ansehen: 3-Phasen-Wechselrichter</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=MOSFET+half+bridge+PCB+layout+minimize+switching+loop&udm=2')">🔄 Ansehen: Kompakte Schaltkreise</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=BQ76920+BMS+PCB+layout+Li+ion+battery+protection&udm=2')">🔋 Ansehen: BMS-Layouts</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=wireless+power+transfer+WPC+Qi+coil+PCB+design&udm=2')">📷 Ansehen: Drahtlose Energieübertragung</button>
             </div>
         `,
@@ -275,6 +281,8 @@ i18n.registerContent('de', 'level4', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=modular+robot+electronics+system+architecture+block+diagram&udm=2')">🔍 Ansehen: Systemarchitektur</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=CAN+bus+wiring+harness+robot+industrial+PCB+connector&udm=2')">🔌 Ansehen: CAN & Feldverdrahtung</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=EtherCAT+slave+industrial+robot+controller+PCB&udm=2')">🌐 Ansehen: EtherCAT-Hardware</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=power+tree+distribution+diagram+PCB+sequencing&udm=2')">📷 Ansehen: Power Trees</button>
             </div>
         `,
@@ -336,6 +344,8 @@ i18n.registerContent('de', 'level4', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+SMT+assembly+line+pick+and+place+machine+factory&udm=2')">🔍 Ansehen: Bestückungslinien</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+panelization+fiducial+mouse+bite+V-score&udm=2')">📐 Ansehen: Panel & Fiducials</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=solder+paste+stencil+aperture+QFN+BGA+design&udm=2')">🖼️ Ansehen: Lötpasten-Schablone</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=electronics+BOM+bill+of+materials+cost+optimization&udm=2')">📷 Ansehen: Stücklisten-Management</button>
             </div>
         `,
@@ -405,6 +415,8 @@ i18n.registerContent('de', 'level4', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=hardware+design+review+checklist+schematic+review&udm=2')">🔍 Ansehen: Design Reviews</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=embedded+system+hardware+architecture+block+diagram&udm=2')">🏗️ Ansehen: Architekturdiagramme</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=NPI+stage+gate+review+hardware+development+process&udm=2')">📋 Ansehen: NPI-Stage-Gates</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=hardware+project+Gantt+chart+NPI+product+development&udm=2')">📷 Ansehen: HW-Projektplanung</button>
             </div>
         `,
@@ -513,6 +525,8 @@ i18n.registerContent('de', 'level4', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=autonomous+robot+PCB+complete+electronics+custom+board&udm=2')">🔍 Ansehen: Robotik-Boards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=EMC+semi+anechoic+chamber+radiated+emissions+test&udm=2')">📡 Ansehen: EMC-Prüfräume</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=open+source+robot+controller+KiCad+GitHub+hardware&udm=2')">🌐 Ansehen: Open-HW-Robotik</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=electronics+product+development+prototype+to+production&udm=2')">📷 Ansehen: Prototyp → Serie</button>
             </div>
         `,

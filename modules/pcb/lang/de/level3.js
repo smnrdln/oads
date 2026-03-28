@@ -53,6 +53,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=precision+signal+chain+sensor+ADC+diagram&udm=2')">🔍 Ansehen: Signalketten-Design</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Kelvin+4+wire+sense+shunt+resistor+layout&udm=2')">📐 Ansehen: Kelvin-Messung</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=sigma+delta+ADC+noise+oversampling+diagram&udm=2')">📊 Ansehen: Delta-Sigma-ADC</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=ACS712+hall+effect+current+sensor+module+PCB&udm=2')">📷 Ansehen: Stromsensoren</button>
             </div>
         `,
@@ -111,6 +113,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=transmission+line+impedance+matching+reflection+diagram&udm=2')">🔍 Ansehen: Übertragungsleitungen</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=eye+diagram+jitter+signal+integrity+oscilloscope&udm=2')">👁️ Ansehen: Augendiagramme</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+crosstalk+3W+rule+parallel+traces&udm=2')">〰️ Ansehen: Übersprechen / Abstand</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=controlled+impedance+PCB+trace+microstrip+stripline&udm=2')">📷 Ansehen: Impedanzkontrolle</button>
             </div>
         `,
@@ -176,6 +180,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=power+delivery+network+PDN+impedance+decoupling+capacitor+PCB&udm=2')">🔍 Ansehen: PDN-Design</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=MLCC+capacitor+ESR+ESL+SRF+impedance+curve&udm=2')">📊 Ansehen: Kondensator-Impedanz</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=via+inductance+power+plane+PCB+simulation&udm=2')">🔌 Ansehen: Via-Induktivität</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=buck+converter+PCB+layout+switching+regulator+thermal&udm=2')">📷 Ansehen: Schaltregler-Layouts</button>
             </div>
         `,
@@ -236,6 +242,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=FPGA+SoC+PCB+design+BGA+fanout+DDR+routing&udm=2')">🔍 Ansehen: FPGA/SoC-Boards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=BGA+fanout+via+in+pad+dogbone+PCB&udm=2')">🧩 Ansehen: BGA-Fanout</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCIe+differential+pair+routing+PCB+layout&udm=2')">🔌 Ansehen: PCIe-Routing</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=DDR4+memory+length+matching+serpentine+routing+PCB&udm=2')">📷 Ansehen: DDR-Routing</button>
             </div>
         `,
@@ -288,6 +296,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+stackup+layers+impedance+controlled+prepreg&udm=2')">🔍 Ansehen: PCB-Stackups</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=HDI+microvia+laser+drilled+PCB+cross+section&udm=2')">📐 Ansehen: HDI / Microvias</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Rogers+RF+substrate+PCB+material+photo&udm=2')">📷 Ansehen: HF-Materialien</button>
             </div>
         `,
         keyPoints: ['Microstrip-Impedanz aus Stackup-Geometrie und Dk berechnen', 'Material nach Frequenz und Verlustfaktor auswählen', 'HDI-Fan-out für BGA mit engem Raster auslegen'],
@@ -346,6 +356,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=EMC+EMI+shielding+ferrite+bead+common+mode+choke+PCB&udm=2')">🔍 Ansehen: EMV-Komponenten</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=spread+spectrum+clocking+EMI+reduction+diagram&udm=2')">📡 Ansehen: Spread-Spectrum-Takt</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=near+field+EMI+probe+PCB+debugging&udm=2')">🔎 Ansehen: Nahfeldsonden</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=EMC+test+anechoic+chamber+radiated+emissions&udm=2')">📷 Ansehen: EMV-Prüfung</button>
             </div>
         `,
@@ -397,6 +409,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=IPC+class+2+class+3+PCB+inspection+standards&udm=2')">🔍 Ansehen: IPC-Standards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=IPC-2152+trace+width+current+chart&udm=2')">📐 Ansehen: IPC-2152 Leiterbahnen</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=UL+IEC+60950+clearance+creepage+table+PCB&udm=2')">⚡ Ansehen: Sicherheitsabstände</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=creepage+clearance+distance+PCB+high+voltage+isolation&udm=2')">📷 Ansehen: Kriech- und Luftstrecken</button>
             </div>
         `,
@@ -450,6 +464,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+bring+up+debug+oscilloscope+probe+test+point&udm=2')">🔍 Ansehen: PCB-Debugging</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=current+probe+oscilloscope+power+rail+noise&udm=2')">⚡ Ansehen: Stromzangen / Probes</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=TDR+time+domain+reflectometry+PCB+impedance&udm=2')">📈 Ansehen: TDR-Messung</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=flying+probe+test+boundary+scan+JTAG+PCB&udm=2')">📷 Ansehen: Testausrüstung</button>
             </div>
         `,
@@ -506,6 +522,9 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=custom+robot+controller+PCB+complete+multi-layer&udm=2')">🔍 Ansehen: Roboter-Controller-Boards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=BLDC+motor+controller+FOC+PCB+three+phase&udm=2')">🤖 Ansehen: BLDC / FOC</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=LiDAR+sensor+interface+PCB+robot&udm=2')">📡 Ansehen: LiDAR-Schnittstellen</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=6+layer+PCB+layout+high+speed+mixed+signal&udm=2')">📷 Ansehen: Mehrlagen-Layouts</button>
             </div>
         `,
         keyPoints: ['Hochgeschwindigkeits-MCU-Boards aufbauen und in Betrieb nehmen', 'Vollständige Multi-Subsystem-Roboter-Controller entwerfen', 'SI/PI- und EMV-Praktiken in echten Projekten anwenden'],
@@ -572,6 +591,8 @@ i18n.registerContent('de', 'level3', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+antenna+design+WiFi+BLE+trace+inverted+F&udm=2')">🔍 Ansehen: PCB-Antennen</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=chip+antenna+2.4GHz+ESP32+PCB+layout&udm=2')">📶 Ansehen: Chip-Antennen</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=RF+shield+can+EMI+wireless+module+PCB&udm=2')">🛡️ Ansehen: HF-Schirme</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=antenna+matching+network+smith+chart+VNA+NanoVNA&udm=2')">📷 Ansehen: Antennenanpassung</button>
             </div>
         `,
