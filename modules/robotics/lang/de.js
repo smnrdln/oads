@@ -1,0 +1,100 @@
+// ════════════════════════════════════════════════════════
+// German Language Pack (de) — Robotics module
+// ════════════════════════════════════════════════════════
+
+i18n.registerLanguage('de', 'Deutsch', {
+
+    'app.title': 'Robotik- & Autonomie-Trainer',
+    'header.progress': 'Fortschritt',
+    'header.xp': 'XP',
+    'header.level': 'Stufe %s',
+    'header.streak': 'Serie',
+
+    'sidebar.title': '📚 Kursübersicht',
+    'sidebar.menu': 'Menü',
+    'search.label': '🔎 Inhalte suchen',
+    'search.placeholder': 'Lektionen, Übungen, Szenarien und Quellen durchsuchen',
+    'search.clear': 'Löschen',
+    'search.help': 'Suche im Lektionstext, in Kernpunkten, Übungen, Szenarien und Quellen.',
+    'search.summary': '%s Themen gefunden · %s Treffer',
+    'search.noResults': 'Keine Treffer für "%s"',
+    'search.topicCount': '%s Themen',
+
+    'level.level1.name': 'Stufe 1: Grundlagen',
+    'level.level2.name': 'Stufe 2: Kinematik & Regelung',
+    'level.level3.name': 'Stufe 3: Wahrnehmung & Planung',
+    'level.level4.name': 'Stufe 4: Autonomie & Systeme',
+
+    'category.essential': 'Grundlagen',
+    'category.embedded': 'Embedded',
+    'category.robotics': 'Robotik',
+
+    'welcome.heading': 'Willkommen beim Robotik- & Autonomie-Trainer',
+    'welcome.description': 'Wähle in der Seitenleiste ein Thema, um zu starten. Jedes Thema enthält Lerninhalt, die wichtigsten Erkenntnisse und interaktive Übungen.',
+    'welcome.totalXP': 'Gesamt-XP',
+    'welcome.exercisesDone': 'Abgeschlossene Übungen',
+    'welcome.scenariosSolved': 'Gelöste Szenarien',
+
+    'achievements.title': '🏆 Erfolge',
+    'achievement.first_steps.title': 'Erste Schritte',
+    'achievement.first_steps.desc': 'Erstes Thema abgeschlossen',
+    'achievement.beginner_master.title': 'Anfänger-Meister',
+    'achievement.beginner_master.desc': 'Stufe 1 abgeschlossen',
+    'achievement.quiz_master.title': 'Quiz-Meister',
+    'achievement.quiz_master.desc': '10 Übungen abgeschlossen',
+    'achievement.scenario_solver.title': 'Szenario-Löser',
+    'achievement.scenario_solver.desc': '5 Szenarien gelöst',
+    'achievement.intermediate.title': 'Fortgeschrittene Robotik',
+    'achievement.intermediate.desc': 'Stufe 2 abgeschlossen',
+    'achievement.advanced.title': 'Planungs-Profi',
+    'achievement.advanced.desc': 'Stufe 3 abgeschlossen',
+    'achievement.expert.title': 'System-Experte',
+    'achievement.expert.desc': 'Stufe 4 abgeschlossen',
+    'achievement.perfectionist.title': 'Perfektionist',
+    'achievement.perfectionist.desc': '100 % abgeschlossen',
+
+    'topic.comingSoon': 'Die Inhalte zu diesem Thema folgen in Kürze.',
+    'topic.keyTakeaways': '🎯 Wichtigste Erkenntnisse',
+    'topic.relatedTopics': '🔗 Verwandte Themen',
+    'topic.furtherReading': '📚 Weiterführende Quellen',
+    'topic.markCompleted': '✅ Als erledigt markieren (+20 XP)',
+    'topic.completed': '✅ Abgeschlossen',
+    'topic.nextTopic': 'Nächstes Thema →',
+    'topic.nextLevel': 'Nächste Stufe →',
+
+    'exercises.title': '🎯 Übungen — Wissen testen',
+    'exercises.retry': '🔄 Übungen wiederholen',
+    'exercises.submitAnswer': 'Antwort absenden',
+    'exercises.checkAnswer': 'Antwort prüfen',
+    'exercises.selectAnswer': 'Bitte wähle eine Antwort aus.',
+    'exercises.selectTrueFalse': 'Bitte wähle Richtig oder Falsch aus.',
+    'exercises.enterNumeric': 'Bitte gib eine numerische Antwort ein.',
+    'exercises.calculation': '📐 Berechnung',
+    'exercises.trueOrFalse': '✅ Richtig oder Falsch',
+    'exercises.true': '✅ Richtig',
+    'exercises.false': '❌ Falsch',
+    'exercises.typePlaceholder': 'Antwort eingeben ...',
+
+    'quiz.correct': '✅ Richtig! +%s XP',
+    'quiz.correctCalc': '✅ Richtig! (Antwort: %s%s) +%s XP',
+    'quiz.incorrect': '❌ Nicht richtig.',
+    'quiz.incorrectCalc': '❌ Nicht ganz. Die richtige Antwort ist %s%s.',
+
+    'scenarios.title': '🔧 Praxis-Szenario',
+    'scenario.excellent': '✅ Sehr gut! +%s XP',
+    'scenario.notQuite': '❌ Nicht ganz.',
+
+    'notification.levelUp': '🎉 Stufenaufstieg! Du bist jetzt Stufe %s.',
+    'notification.achievement': '🏆 Erfolg: %s!',
+    'notification.completed': '✅ Abgeschlossen: %s',
+
+    'visualRef.title': '🖼️ Visuelle Referenz',
+    'visualRef.openNewTab': 'In neuem Tab öffnen ↗',
+
+    'language.label': '🌐',
+
+    'theme.dark': 'Dunkel',
+    'theme.light': 'Hell',
+    'theme.switchToDark': 'Zum dunklen Modus wechseln',
+    'theme.switchToLight': 'Zum hellen Modus wechseln'
+});
