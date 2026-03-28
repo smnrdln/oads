@@ -240,6 +240,7 @@ i18n.registerContent('de', 'level1', [
             <ul>
                 <li>8-16 Kanäle zur Erfassung mehrerer Signale</li>
                 <li>Protokolldecoder: SPI, I2C, UART, CAN integriert</li>
+                <li>Günstige Optionen: Saleae Logic, DSLogic</li>
                 <li>Verwenden, wenn: Kommunikation fehlschlägt, Timing-Probleme</li>
             </ul>
             
@@ -250,6 +251,13 @@ i18n.registerContent('de', 'level1', [
                 <li>Filterdesigns, Op-Amp-Schaltungen verifizieren</li>
                 <li>AC-Analyse (Frequenzgang), Transienten-Analyse (Zeitverhalten)</li>
             </ul>
+            
+            <p><strong>Falstad-Schaltungssimulator (online):</strong></p>
+            <ul>
+                <li>Interaktive Echtzeit-Visualisierung</li>
+                <li>Gut zum Erlernen einfacher Schaltungen</li>
+                <li>Keine Installation nötig</li>
+            </ul>
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=breadboard+layout+connections+diagram+explained&udm=2')">🔍 Ansehen: Breadboard-Layout</button>
@@ -258,7 +266,8 @@ i18n.registerContent('de', 'level1', [
             </div>
         `,
         keyPoints: ['Messe Spannung parallel, Strom in Reihe, Widerstand stromlos', 'Nutze Oszilloskop-Triggering, um PWM und Kommunikationssignale zu erfassen', 'Simuliere Schaltungen in LTspice oder Falstad vor dem Bau der Hardware'],
-        relatedTopics: [{ level: 'level1', index: 5, label: 'Einführung in PCB-Design-Konzepte' }, { level: 'level1', index: 8, label: 'Löt- & Montagefähigkeiten' }]
+        relatedTopics: [{ level: 'level1', index: 5, label: 'Einführung in PCB-Design-Konzepte' }, { level: 'level1', index: 8, label: 'Löt- & Montagefähigkeiten' }],
+        resources: [{ title: 'EEVblog — Multimeter-Tutorial (Englisch)', url: 'https://www.youtube.com/watch?v=gh1n_ELmpFI' }, { title: 'Saleae Logic Analyzer', url: 'https://www.saleae.com/' }]
     },
     {
         title: 'Einführung in PCB-Design-Konzepte',
@@ -288,6 +297,7 @@ i18n.registerContent('de', 'level1', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=SMD+vs+through+hole+components+comparison+PCB&udm=2')">🔍 Ansehen: SMD vs. THT (Through-Hole)</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=SMD+0805+0603+component+size+comparison&udm=2')">📷 Ansehen: SMD-Bauformgrößen</button>
             </div>
             
             <h3>🔌 Netze & Beschriftungen</h3>
@@ -306,13 +316,14 @@ i18n.registerContent('de', 'level1', [
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+layer+stackup+cross+section+diagram&udm=2')">🔍 Ansehen: PCB Schichtaufbau</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=PCB+cross+section+microscope+photo+layers&udm=2')">📷 Ansehen: Echte Querschnittsfotos</button>
             </div>
             
             <h3>⚙️ Designregeln (Design Rules)</h3>
             <p>Einschränkungen zur Sicherstellung der Herstellbarkeit:</p>
             <ul>
                 <li><strong>Leiterbahnbreite (Trace Width):</strong> Minimal 6-8 mil (0.15-0.2mm) typisch</li>
-                <li><strong>Abstand (Clearance):</strong> Platz zwischen Leiterbahnen</li>
+                <li><strong>Abstand (Clearance):</strong> Platz zwischen Leiterbahnen (typ. min. 6–8 mil)</li>
                 <li><strong>Bohrungsgröße:</strong> Minimalbohrer 0.3mm</li>
                 <li><strong>Restring (Annular Ring):</strong> Kupfer um das Loch für Stabilität</li>
             </ul>
@@ -329,8 +340,8 @@ i18n.registerContent('de', 'level1', [
             </ol>
         `,
         keyPoints: ['Unterscheide Leiterbahnen, Pads, Vias und Kupferflächen', 'Lege minimale Breite und Abstände fest gemäß den Fähigkeiten der Fabrik', 'Ordne logischen Schaltsymbolen physische Footprints zu'],
-        relatedTopics: [{ level: 'level1', index: 6, label: 'Anfänger EDA Tool Workflow' }],
-        resources: [{ title: 'JLCPCB Fertigungsfähigkeiten (Englisch)', url: 'https://jlcpcb.com/capabilities/pcb-capabilities' }]
+        relatedTopics: [{ level: 'level1', index: 6, label: 'Anfänger EDA Tool Workflow' }, { level: 'level2', index: 5, label: 'PCB-Layout-Techniken für Fortgeschrittene' }],
+        resources: [{ title: 'KiCad — offizielle Dokumentation', url: 'https://docs.kicad.org/' }, { title: 'JLCPCB — Fertigungsfähigkeiten', url: 'https://jlcpcb.com/capabilities/pcb-capabilities' }]
     },
     {
         title: 'Anfänger EDA Tool Workflow (KiCad)',
@@ -343,7 +354,7 @@ i18n.registerContent('de', 'level1', [
                 <li><strong>Komponenten platzieren:</strong> Taste 'A', Bibliothek durchsuchen</li>
                 <li><strong>Strom-Symbole hinzufügen:</strong> VCC, GND, +3.3V</li>
                 <li><strong>Verdrahten:</strong> Taste 'W', zum Verbinden klicken</li>
-                <li><strong>Netze benennen:</strong> Wichtige Signale benennen (MOSI, TX, RX)</li>
+                <li><strong>Netze benennen:</strong> Wichtige Signale benennen (MOSI, SCK, TX, RX)</li>
                 <li><strong>Werte hinzufügen:</strong> Widerstandswerte, Kondensatorspannungen etc.</li>
             </ol>
             
@@ -351,13 +362,15 @@ i18n.registerContent('de', 'level1', [
             <ul>
                 <li>Jedes Symbol braucht einen physischen Footprint</li>
                 <li>Widerstand → 0805, 1206 oder bedrahtet?</li>
-                <li>Datenblatt nach empfohlenem "Land Pattern" prüfen</li>
+                <li>MCU → QFN32, LQFP48 usw.</li>
+                <li>Datenblatt nach empfohlenem „Land Pattern“ prüfen</li>
             </ul>
             
             <h3>✅ Schritt 3: Electrical Rule Check (ERC)</h3>
             <ul>
-                <li>Deckt Fehler auf: Nicht verbundene Pins, fehlende Stromversorgung</li>
-                <li>Alle Fehler vor dem Layouten beheben</li>
+                <li>Deckt Fehler auf: nicht verbundene Pins, fehlende Versorgung</li>
+                <li>Warnungen: Eingang mit Eingang verbunden (meist schlecht)</li>
+                <li>Alle Fehler vor dem PCB-Layout beheben</li>
             </ul>
             
             <h3>🖼️ Schritt 4: PCB-Layout</h3>
@@ -372,23 +385,36 @@ i18n.registerContent('de', 'level1', [
             
             <h3>✅ Schritt 5: Design Rule Check (DRC)</h3>
             <ul>
-                <li>Prüfung von Spurbreiten/Abstands-Regeln</li>
-                <li>Prüfung auf überlappende Bahnen und unverbundene Netze</li>
+                <li>Spurbreiten- und Abstandsregeln prüfen</li>
+                <li>Auf überlappende Bahnen prüfen</li>
+                <li>Sicherstellen, dass keine Netze unroutet sind</li>
+                <li>Alle Fehler vor der Fertigung beheben</li>
             </ul>
             
-            <h3>📦 Schritt 6: Fertigungsdateien generieren</h3>
+            <h3>📦 Schritt 6: Fertigungsdateien erzeugen</h3>
             <ul>
-                <li><strong>Gerber-Dateien:</strong> Standardformat für PCB-Fabriken</li>
-                <li><strong>Bohrdateien:</strong> Excellon Format für die Bohrlöcher</li>
-                <li><strong>Stückliste (BOM):</strong> Komponentenliste mit Artikelnummern</li>
+                <li><strong>Gerber-Dateien:</strong> Standardformat für PCB-Fabriken (RS-274X)</li>
+                <li><strong>Bohrdateien:</strong> Excellon-Format für Bohrungen</li>
+                <li><strong>Stückliste (BOM):</strong> Komponentenliste mit Bestellnummern</li>
+                <li><strong>Bestückungszeichnungen:</strong> Referenz für Bauteilplatzierung</li>
             </ul>
+            
+            <h3>🏭 Schritt 7: Bei der Fab bestellen</h3>
+            <p><strong>Gängige Budget-Fabs:</strong></p>
+            <ul>
+                <li><strong>JLCPCB:</strong> z. B. wenige Dollar für 5 Platinen, schneller Versand, Bestückservice</li>
+                <li><strong>PCBWay:</strong> gute Qualität, wettbewerbsfähige Preise</li>
+                <li><strong>OSH Park:</strong> USA, violette Platinen, hohe Qualität</li>
+            </ul>
+            <p><strong>Typische Durchlaufzeit:</strong> 2–5 Tage Fertigung plus Versand</p>
+            <p><strong>Standard-Spec:</strong> 2 Lagen, 1,6 mm, HASL, grüner Lötstopplack</p>
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=KiCad+schematic+editor+PCB+layout+screenshot&udm=2')">🔍 Ansehen: KiCad Benutzeroberfläche</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Gerber+file+viewer+PCB+manufacturing+layers&udm=2')">📷 Ansehen: Gerber-Dateien</button>
             </div>
         `,
-        keyPoints: ['Schließe den KiCad Workflow ab: Schaltplan → Footprints → ERC → Layout → DRC → Gerber', 'Behebe alle ERC und DRC Fehler vor der Fertigung', 'Generiere Gerber- und Bohrdateien'],
-        resources: [{ title: 'KiCad Offizielle Dokumentation', url: 'https://docs.kicad.org/' }]
+        keyPoints: ['KiCad-Workflow durchlaufen: Schaltplan → Footprints → ERC → Layout → DRC → Gerber', 'Alle ERC- und DRC-Fehler vor der Fertigung beheben', 'Gerber- und Bohrdateien erzeugen und bei JLCPCB/PCBWay bestellen']
     },
     {
         title: 'Anfängerprojekte (Fokus: Embedded & Robotik)',
@@ -472,8 +498,7 @@ i18n.registerContent('de', 'level1', [
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=MPU6050+IMU+breakout+board+PCB&udm=2')">🔧 Ansehen: Sensor Breakout Boards</button>
             </div>
         `,
-        keyPoints: ['Baue Prototypen vollständig auf dem Breadboard vor der PCB', 'Berechne LED-Vorwiderstände und Timer-Frequenzen', 'Bestelle und bestücke PCBs von günstigen Fabriken'],
-        relatedTopics: [{ level: 'level1', index: 8, label: 'Löt- & Montagefähigkeiten' }]
+        keyPoints: ['Baue Prototypen vollständig auf dem Breadboard vor der PCB', 'Berechne LED-Vorwiderstände und Timer-Frequenzen', 'Bestelle und bestücke PCBs von günstigen Fabriken']
     },
     {
         title: 'Löt- & Montagefähigkeiten',

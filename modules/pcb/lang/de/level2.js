@@ -85,9 +85,6 @@ i18n.registerContent('de', 'level2', [
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=Wheatstone+bridge+strain+gauge+load+cell+circuit&udm=2')">📷 Ansehen: Wheatstone-Brücke</button>
             </div>
         `,
-        keyPoints: ['Thévenin- und Norton-Äquivalente vereinfachen die Analyse komplexer Netzwerke', 'OP-Amp-Nichtidealitäten bestimmen reale Genauigkeit in Präzisionsschaltungen', 'ADC-Eingänge brauchen Filterung, Skalierung und sauberen Arbeitspunkt'],
-        relatedTopics: [{ level: 'level1', index: 2, label: 'Grundlagen analoger Schaltungen' }, { level: 'level2', index: 3, label: 'Mikrocontroller-Hardwaredesign' }],
-        resources: [{ title: 'TI Precision Labs – Operationsverstärker', url: 'https://www.ti.com/video/series/precision-labs-op-amps.html' }]
     },
     {
         title: 'Digitalelektronik für Fortgeschrittene',
@@ -131,13 +128,27 @@ i18n.registerContent('de', 'level2', [
                 <li>Verwendung: Konfigurationsdaten, Kalibrierwerte</li>
             </ul>
 
-            <h3>⏰ Taktsignale und Entprellung</h3>
+            <p><strong>PCB-Hinweise (Speicher):</strong></p>
+            <ul>
+                <li><strong>Entkopplung:</strong> 100 nF nah an jedem VCC-Pin</li>
+                <li><strong>Adressierung:</strong> A0–A2-Pins für die I²C-Geräteadresse</li>
+                <li><strong>Schreibschutz:</strong> WP-Pin beim EEPROM</li>
+            </ul>
+
+            <h3>⏰ Taktung</h3>
             <p><strong>Quarzoszillatoren:</strong></p>
             <ul>
                 <li>Präzise Frequenzreferenz für MCUs</li>
                 <li>Üblich: 8 MHz, 12 MHz, 16 MHz, 32,768 kHz (RTC)</li>
                 <li>Benötigt Lastkondensatoren: typisch 2× 18–22 pF nach Masse</li>
                 <li>PCB: Kurze Leitungen, Massefläche darunter, abseits von Störquellen</li>
+            </ul>
+
+            <p><strong>Taktverteilung:</strong></p>
+            <ul>
+                <li>Taktleitungen kurz und direkt führen</li>
+                <li>Andere Leitungen nicht parallel unter oder direkt über Taktsignalen routen</li>
+                <li>Bei langen Leitungen Serienterminierung (22–33 Ω)</li>
             </ul>
 
             <p><strong>Entprellung:</strong></p>
@@ -147,12 +158,19 @@ i18n.registerContent('de', 'level2', [
                 <li>Verhindert Mehrfachauslösung durch mechanisches Prellen</li>
             </ul>
 
-            <h3>🔄 Finite State Machines</h3>
+            <h3>🔄 Zustandsautomaten (FSM)</h3>
             <p>Sequenzielle Logik für komplexe Steuerungsabläufe</p>
             <ul>
                 <li><strong>Zustände:</strong> IDLE, RUNNING, ERROR, COMPLETE</li>
                 <li><strong>Übergänge:</strong> Ereignisse, die Zustände wechseln</li>
                 <li><strong>Ausgänge:</strong> Aktionen in jedem Zustand</li>
+            </ul>
+
+            <p><strong>Beispiele Robotik:</strong></p>
+            <ul>
+                <li>Motorregelung: STOP → BESCHLEUNIGEN → LAUF → BREMSEN → STOP</li>
+                <li>Kommunikationsprotokoll: IDLE → SENDEN → WARTE_ACK → FERTIG</li>
+                <li>Umsetzung in der Firmware — Hardware-Sequencing dennoch verstehen</li>
             </ul>
 
             <h3>🔢 Schieberegister und Zähler</h3>
@@ -164,14 +182,19 @@ i18n.registerContent('de', 'level2', [
                 <li>Verwendung: LED-Anzeigen, Relaissteuerung, GPIO-Erweiterung</li>
             </ul>
 
+            <p><strong>Zähler (74HC4040):</strong></p>
+            <ul>
+                <li>Zählt Taktimpulse, teilt Frequenz</li>
+                <li>Einsatz: Frequenzteilung, Ereigniszählung</li>
+            </ul>
+
             <div class="visual-ref-links">
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=logic+level+shifter+BSS138+MOSFET+circuit+3.3V+5V&udm=2')">🔍 Ansehen: Pegelwandler</button>
-                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=FPGA+development+board+JTAG+debug+SPI+flash&udm=2')">📷 Ansehen: FPGA-Boards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=FPGA+development+board+JTAG+debug+SPI+flash&udm=2')">🔍 Ansehen: FPGA-Entwicklungsboards</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=logic+level+shifter+BSS138+MOSFET+circuit+3.3V+5V&udm=2')">📷 Ansehen: Pegelwandler</button>
             </div>
         `,
-        keyPoints: ['Pegelanpassung muss zum Signaltyp und zur Datenrate passen', 'Speicherbausteine unterscheiden sich in Schnittstelle, Flüchtigkeit und Zugriffsgeschwindigkeit', 'Zustandsautomaten strukturieren komplexe digitale Steuerungsabläufe'],
         relatedTopics: [{ level: 'level1', index: 3, label: 'Grundlagen der Digitaltechnik' }, { level: 'level3', index: 3, label: 'FPGA- und SoC-Hardwaredesign' }],
-        resources: [{ title: 'STM32 Hardware Design Guide (AN4488)', url: 'https://www.st.com/resource/en/application_note/an4488.pdf' }]
+        resources: [{ title: 'STM32 Hardware Design Guide (AN4488)', url: 'https://www.st.com/resource/en/application_note/an4488.pdf' }, { title: 'DigiKey Referenzdesigns', url: 'https://www.digikey.com/reference-designs' }]
     },
     {
         title: 'Leistungselektronik für Embedded und Robotik',
@@ -211,7 +234,14 @@ i18n.registerContent('de', 'level2', [
             <p><strong>Boost-Regler (Hochsetzsteller):</strong></p>
             <ul>
                 <li>Spannung erhöhen (z. B. 3,3 V → 5 V, 5 V → 12 V)</li>
+                <li>Einsatz: Motoren aus Batterie, LCD-Hintergrundbeleuchtung</li>
                 <li>Beispiel-ICs: MT3608 (günstiges Modul), TPS61088</li>
+            </ul>
+
+            <p><strong>Buck-Boost:</strong></p>
+            <ul>
+                <li>Ausgang kann höher oder niedriger als der Eingang sein</li>
+                <li>Einsatz: Batteriesysteme mit schwankender Spannung</li>
             </ul>
 
             <p><strong>PCB-Layout für Schaltregler:</strong></p>
@@ -220,22 +250,51 @@ i18n.registerContent('de', 'level2', [
                 <li>Schaltknoten-Leiterbahnen kurz und breit halten</li>
                 <li>Ein-/Ausgangskondensatoren nah am IC platzieren</li>
                 <li>Massefläche unter der gesamten Schaltung</li>
+                <li>Empfindliche Signale nicht am Schaltknoten vorbeiführen</li>
             </ul>
 
             <h3>🔌 Entkopplungsstrategie</h3>
+            <p><strong>Bulk-Kondensatoren (10–100 µF):</strong></p>
             <ul>
-                <li><strong>Bulk-Kondensatoren (10–100 µF):</strong> Elektrolyt oder Tantal, nah am Versorgungseingang</li>
-                <li><strong>HF-Kondensatoren (100 nF):</strong> Keramik X7R, so nah wie möglich an IC-Versorgungspins (&lt;5 mm)</li>
-                <li><strong>Regel:</strong> Ein 100-nF-Kondensator pro Versorgungspin-Paar (VCC/GND)</li>
-                <li>Via direkt von Kondensatorpad zur Massefläche</li>
+                <li>Elektrolyt oder Tantal</li>
+                <li>Stabilisieren tieffrequente Transienten</li>
+                <li>Nah am Versorgungseingang platzieren</li>
+            </ul>
+            <p><strong>Hochfrequente Kondensatoren (100 nF):</strong></p>
+            <ul>
+                <li>Keramik X7R oder X5R</li>
+                <li>Dämpfen HF-Schaltnetz-Rauschen</li>
+                <li>So nah wie möglich an IC-Versorgungspins (&lt;5 mm)</li>
+                <li><strong>Regel:</strong> Ein 100 nF pro VCC/GND-Pin-Paar</li>
+            </ul>
+            <p><strong>Platzierung:</strong></p>
+            <ul>
+                <li>Via vom Kondensatorpad direkt zur Massefläche</li>
+                <li>Kurze, breite Leiterbahnen zu den IC-Pins</li>
+                <li>Mehrere Vias bei hohem Strom (&gt;100 mA)</li>
             </ul>
 
             <h3>🤖 Motortreiber</h3>
             <p><strong>H-Brücken-Topologie:</strong></p>
             <ul>
                 <li>4 Transistoren steuern Motorrichtung und Bremsen</li>
-                <li>Vorwärts: Q1+Q4 ein, Q2+Q3 aus | Rückwärts: Q2+Q3 ein, Q1+Q4 aus</li>
-                <li>Bremse: Alle Low-Side-Transistoren ein (Motorklemmen kurzschließen)</li>
+                <li>Vorwärts: Q1+Q4 ein, Q2+Q3 aus</li>
+                <li>Rückwärts: Q2+Q3 ein, Q1+Q4 aus</li>
+                <li>Bremse: Alle Low-Side ein (Motorklemmen kurzschließen)</li>
+            </ul>
+
+            <p><strong>PWM-Steuerung:</strong></p>
+            <ul>
+                <li>Tastverhältnis = Drehzahl (0–100 %)</li>
+                <li>Typische PWM-Frequenz: 15–25 kHz (über dem Hörbereich)</li>
+                <li>Richtungs-Pins plus PWM (oder zwei PWM für unabhängige Steuerung)</li>
+            </ul>
+
+            <p><strong>Strommessung:</strong></p>
+            <ul>
+                <li>Shunt-Widerstand (0,01–0,1 Ω) in Reihe zum Motor</li>
+                <li>Spannung mit OPV oder speziellem IC verstärken (z. B. INA139)</li>
+                <li>Einsatz: Überstromschutz, Stall-Erkennung, Drehmomentschätzung</li>
             </ul>
 
             <p><strong>Gängige ICs:</strong></p>
@@ -245,28 +304,52 @@ i18n.registerContent('de', 'level2', [
                 <li><strong>TB6612FNG:</strong> Dual, 1,2 A, MOSFET-basiert (effizient)</li>
             </ul>
 
-            <h3>🔋 Batterie- und Schutzschaltungen</h3>
-            <p><strong>Li-Ion/LiPo-Ladung:</strong></p>
+            <h3>🔋 Batteriemanagement</h3>
+            <p><strong>Li-Ion/LiPo-Laden:</strong></p>
             <ul>
-                <li>CC/CV-Profil: Konstantstrom → Konstantspannung</li>
-                <li>Laden auf 4,2 V, Abschalten bei 3,0 V (niemals darunter!)</li>
-                <li>Lade-IC: TP4056 (1 A, einfach), BQ24195 (erweitert)</li>
+                <li>CC/CV: Konstantstrom → Konstantspannung</li>
+                <li>Laden bis 4,2 V, Abschaltung bei 3,0 V (niemals tiefer entladen!)</li>
+                <li>Lade-IC: TP4056 (1 A, einfach), BQ24195 (fortgeschritten)</li>
+            </ul>
+            <p><strong>Schutz:</strong></p>
+            <ul>
+                <li><strong>Überladung:</strong> Abschalten bei 4,2 V</li>
+                <li><strong>Tiefentladung:</strong> Abschalten bei 3,0 V</li>
+                <li><strong>Überstrom:</strong> Begrenzung oder Abschaltung</li>
+                <li>Schutz-ICs: DW01 + FS8205A (häufige Kombination)</li>
+            </ul>
+            <p><strong>Fuel-Gauge-ICs:</strong></p>
+            <ul>
+                <li>Schätzen verbleibende Akku-Kapazität</li>
+                <li>MAX17048 (I²C, spannungsbasiert)</li>
+                <li>Coulomb-Zählung für höhere Genauigkeit</li>
             </ul>
 
-            <p><strong>Schutzschaltungen:</strong></p>
+            <h3>🛡️ Schutzschaltungen</h3>
+            <p><strong>TVS-Dioden (Transient Voltage Suppressor):</strong></p>
             <ul>
-                <li>TVS-Dioden gegen Spannungsspitzen an Motorsanschlüssen und Versorgungseingängen</li>
-                <li>Verpolschutz: P-MOSFET auf High-Side</li>
-                <li>Überstromschutz: Rückstellbare Sicherungen (PTC/Polyfuse)</li>
+                <li>Begrenzen Spannungsspitzen (ESD, induktive Rückschläge)</li>
+                <li>Über Motorklemmen, Versorgungseingängen, Datenleitungen</li>
+                <li>Durchbruchspannung &gt; Nennspannung + etwa 20 % wählen</li>
+            </ul>
+            <p><strong>Verpolschutz:</strong></p>
+            <ul>
+                <li>P-MOSFET in der High-Side (V_gs &lt; 0 für Leitung)</li>
+                <li>Schottky-Diode (einfach, aber Verlustleistung)</li>
+            </ul>
+            <p><strong>Überstromschutz:</strong></p>
+            <ul>
+                <li>Rückstellbare Sicherungen (PTC, Polyfuse)</li>
+                <li>Elektronische Sicherungen mit Strommessung + MOSFET</li>
             </ul>
 
             <div class="visual-ref-links">
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=buck+boost+LDO+voltage+regulator+PCB+circuit+diagram&udm=2')">🔍 Ansehen: Spannungsregler</button>
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=H-bridge+motor+driver+MOSFET+circuit+diagram&udm=2')">📷 Ansehen: H-Brücken-Treiber</button>
+                <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=TVS+diode+protection+circuit+ESD+PCB&udm=2')">⚡ Ansehen: TVS-Schutz</button>
             </div>
         `,
-        keyPoints: ['LDO vs. Schaltregler: Abwägen zwischen Wirkungsgrad, Rauschen und Aufwand', 'Schaltregler stehen und fallen mit dem PCB-Layout', 'Motortreiber und Batteriesysteme brauchen konsequente Schutzkonzepte'],
-        relatedTopics: [{ level: 'level1', index: 0, label: 'Mathematik, Physik und Grundbegriffe' }, { level: 'level3', index: 2, label: 'Power Integrity und fortgeschrittenes Versorgungsdesign' }],
+        relatedTopics: [{ level: 'level1', index: 0, label: 'Mathematik, Physik und grundlegende Konzepte' }, { level: 'level3', index: 2, label: 'Power Integrity und fortgeschrittenes Versorgungsdesign' }],
         resources: [{ title: 'TI Power Supply Design Seminar', url: 'https://www.ti.com/design-resources/design-tools-simulation/power-supply-design-seminar.html' }, { title: 'TI Webench Power Designer', url: 'https://www.ti.com/design-resources/design-tools-simulation/webench-power-designer.html' }]
     },
     {
@@ -353,9 +436,6 @@ i18n.registerContent('de', 'level2', [
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=crystal+oscillator+load+capacitor+PCB+layout&udm=2')">📷 Ansehen: Quarzschaltungen</button>
             </div>
         `,
-        keyPoints: ['Stabiles MCU-Design beginnt mit sauberer Mindestbeschaltung und konsequenter Entkopplung', 'Debug- und Programmierschnittstellen gehören in jedes Prototypenlayout', 'Datenblatt und Referenzdesign sind keine Option, sondern Grundlage'],
-        relatedTopics: [{ level: 'level2', index: 4, label: 'Kommunikationsschnittstellen' }, { level: 'level2', index: 5, label: 'PCB-Layout-Techniken für Fortgeschrittene' }],
-        resources: [{ title: 'AN4488 – STM32 Hardware Design Guide', url: 'https://www.st.com/resource/en/application_note/an4488.pdf' }]
     },
     {
         title: 'Kommunikationsschnittstellen (Hardware-Fokus)',
@@ -443,9 +523,6 @@ i18n.registerContent('de', 'level2', [
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=RS-485+differential+pair+network+termination+diagram&udm=2')">📷 Ansehen: RS-485-Netzwerke</button>
             </div>
         `,
-        keyPoints: ['Jede Schnittstelle hat eigene elektrische Randbedingungen', 'Topologie, Pull-ups und Abschlusswiderstände sind Kern des Designs', 'ESD-Schutz ist Pflicht für alle externen Steckverbinder'],
-        relatedTopics: [{ level: 'level1', index: 4, label: 'Werkzeuge und Messtechnik' }, { level: 'level2', index: 3, label: 'Mikrocontroller-Hardwaredesign' }],
-        resources: [{ title: 'DigiKey Reference Designs', url: 'https://www.digikey.com/reference-designs' }]
     },
     {
         title: 'PCB-Layout-Techniken für Fortgeschrittene',
@@ -511,9 +588,6 @@ i18n.registerContent('de', 'level2', [
                 <button class="visual-ref-btn" onclick="openVisualRef('https://www.google.com/search?igu=1&q=decoupling+capacitor+PCB+placement+via+ground+plane&udm=2')">📷 Ansehen: Entkopplungsplatzierung</button>
             </div>
         `,
-        keyPoints: ['Gute Bauteilplatzierung ist wichtiger als spätere Routing-Kosmetik', 'Rückstrompfade und Referenzflächen müssen aktiv gestaltet werden', 'Mehrlagige Boards bieten echte elektrische Vorteile, nicht nur Komfort'],
-        relatedTopics: [{ level: 'level1', index: 5, label: 'Einführung in PCB-Design-Konzepte' }, { level: 'level3', index: 4, label: 'Fortgeschrittene PCB-Stackups und Materialien' }],
-        resources: [{ title: 'KiCad Official Docs', url: 'https://docs.kicad.org/' }]
     },
     {
         title: 'Design für Herstellbarkeit (DFM) und Montage (DFA)',
@@ -555,9 +629,6 @@ i18n.registerContent('de', 'level2', [
                 <li>Gute Dokumentation reduziert Montagefehler drastisch</li>
             </ul>
         `,
-        keyPoints: ['DFM und DFA müssen schon während des Layouts mitgedacht werden', 'BOM-Qualität ist ebenso wichtig wie Schaltplanqualität', 'Fertigungsdaten müssen vollständig und konsistent sein'],
-        relatedTopics: [{ level: 'level2', index: 5, label: 'PCB-Layout-Techniken für Fortgeschrittene' }, { level: 'level4', index: 4, label: 'Fertigung, Lieferkette und Kostenengineering' }],
-        resources: [{ title: 'JLCPCB Capabilities', url: 'https://jlcpcb.com/capabilities/pcb-capabilities' }]
     },
     {
         title: 'Fortgeschrittene Projekte (Fokus: Embedded/Robotik)',
@@ -601,8 +672,5 @@ i18n.registerContent('de', 'level2', [
                 <li>Zusätzliche Messpunkte und Reserveflächen für Nacharbeit vorsehen</li>
             </ul>
         `,
-        keyPoints: ['Fortgeschrittene Projekte trainieren Systemdenken statt nur Einzelfunktionen', 'Messbarkeit und Inbetriebnahme müssen von Anfang an eingeplant sein', 'Die besten Lernfortschritte entstehen bei echten Integrationsprojekten'],
-        relatedTopics: [{ level: 'level2', index: 3, label: 'Mikrocontroller-Hardwaredesign' }, { level: 'level2', index: 5, label: 'PCB-Layout-Techniken für Fortgeschrittene' }],
-        resources: [{ title: 'Open Source Hardware Beispiele bei DigiKey', url: 'https://www.digikey.com/reference-designs' }]
     }
 ]);
