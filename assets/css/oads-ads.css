@@ -1,0 +1,152 @@
+/* Open Academy — fixed peripheral ad regions (shared home + modules) */
+
+:root {
+    --oads-ad-rail-max: 300px;
+    --oads-ad-rail-min: 240px;
+    --oads-ad-gap: 22px;
+    --oads-ad-border: rgba(148, 163, 184, 0.2);
+    --oads-ad-bg: rgba(255, 255, 255, 0.03);
+    --oads-ad-muted: rgba(148, 163, 184, 0.85);
+}
+
+:root[data-theme='light'] {
+    --oads-ad-border: rgba(15, 23, 42, 0.12);
+    --oads-ad-bg: rgba(15, 23, 42, 0.04);
+    --oads-ad-muted: rgba(71, 85, 105, 0.9);
+}
+
+/* ── Home (marketing) page ── */
+.oads-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(var(--oads-ad-rail-min), var(--oads-ad-rail-max));
+    gap: var(--oads-ad-gap);
+    align-items: start;
+}
+
+.oads-layout.oads-no-side-ads {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.oads-layout__main {
+    min-width: 0;
+}
+
+.oads-layout__rail {
+    position: sticky;
+    top: 20px;
+    min-width: 0;
+}
+
+.oads-ad-rail--empty {
+    display: none !important;
+}
+
+.oads-ad-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid var(--oads-ad-border);
+    background: var(--oads-ad-bg);
+    min-height: 250px;
+    box-sizing: border-box;
+}
+
+.oads-ad-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oads-ad-muted);
+}
+
+.oads-ad-inner {
+    flex: 1;
+    min-height: 200px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.oads-ad-inner .adsbygoogle {
+    width: 100% !important;
+}
+
+/* ── Module trainer (engine layout) ── */
+.oads-module-stage {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.oads-module-stage .main-content {
+    min-width: 0;
+}
+
+.oads-module-stage.oads-no-side-ads .main-content {
+    flex: 1;
+}
+
+.oads-module-ad-rail {
+    width: var(--oads-ad-rail-max);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 16px 16px 0;
+    border-left: 1px solid var(--color-border);
+    background: var(--color-bg-primary);
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.oads-module-ad-rail .oads-ad-shell {
+    position: sticky;
+    top: 12px;
+    min-height: 280px;
+    background: var(--color-bg-secondary);
+    border-color: var(--color-border);
+}
+
+.oads-module-stage.oads-no-side-ads .oads-module-ad-rail {
+    display: none;
+}
+
+@media (max-width: 1100px) {
+    .oads-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .oads-layout__rail {
+        position: static;
+        order: 1;
+        max-width: min(100%, 360px);
+        margin: 0 auto;
+    }
+
+    .oads-layout__main {
+        order: 0;
+    }
+
+    .oads-module-stage {
+        flex-direction: column;
+    }
+
+    .oads-module-ad-rail {
+        width: 100%;
+        max-height: none;
+        border-left: none;
+        border-top: 1px solid var(--color-border);
+        padding: 16px;
+        overflow-y: visible;
+    }
+
+    .oads-module-ad-rail .oads-ad-shell {
+        position: static;
+        max-width: min(100%, 360px);
+        margin: 0 auto;
+    }
+}

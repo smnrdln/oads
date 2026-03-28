@@ -554,6 +554,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="assets/css/oads-ads.css">
 </head>
 
 <body>
@@ -576,6 +577,8 @@
 
     <main id="top">
         <div class="shell">
+            <div class="oads-layout">
+            <div class="oads-layout__main">
             <section class="hero" aria-label="Open Academy Dot Space overview">
                 <div class="eyebrow">Open technical learning</div>
                 <h1>Free learning modules for tech, AI, electronics, robotics.</h1>
@@ -775,8 +778,18 @@
                     </div>
                 </div>
             </footer>
+            </div>
+            <aside class="oads-layout__rail" aria-label="Advertisement">
+                <div class="oads-ad-shell" data-oads-slot="siteRail">
+                    <span class="oads-ad-label">Ad</span>
+                    <div class="oads-ad-inner"></div>
+                </div>
+            </aside>
+            </div>
         </div>
     </main>
+    <script src="assets/js/oads-ads-config.js"></script>
+    <script src="assets/js/oads-ads.js"></script>
 </body>
 
 </html>

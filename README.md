@@ -123,13 +123,14 @@ The shared engine is designed so future learning modules can be added without ed
 - `ads.txt` must remain at the repo root (`/ads.txt`) and must not be moved. GitHub Pages serves it at `https://openacademy.space/ads.txt`, which is where ad networks look for it.
 - Refactors must not move, wrap, defer, or otherwise disturb the AdSense loader script placement or attributes.
 - Static hosting is fully compatible with AdSense; no server-side configuration is needed.
+- Display ads use `assets/css/oads-ads.css`, `assets/js/oads-ads-config.js` (all IDs in one place), and `assets/js/oads-ads.js`. Root `index.html`, `privacy.html`, and each module `index.html` load the config then the loader. Set **`defaultSlot`** to one numeric ad unit ID to use it for every `data-oads-slot` region, or set **`slots.siteRail`** / **`slots.moduleRail`** (and add keys for new modules) for separate reporting. Empty slots with no `defaultSlot` collapse that region to full-width content. The PCB trainer is a single HTML document: the ad rail stays fixed while in-app “pages” change in JavaScript.
 
 ---
 
 ## Adding a new module
 
 1. Copy `modules/pcb/` to a new folder, e.g. `modules/robotics/`.
-2. In the new `index.html`, keep the `../../assets/...` references pointing to the shared engine, i18n, and CSS.
+2. In the new `index.html`, keep the `../../assets/...` references pointing to the shared engine, i18n, CSS, and (if you use ads) `oads-ads.css`, `oads-ads-config.js`, and `oads-ads.js`. Add a matching key under `OADS_ADS.slots` in `oads-ads-config.js` only if you do not use `defaultSlot` (mirror the PCB module’s `data-oads-slot` name).
 3. Set a unique `MODULE_CONFIG.storageKey`, e.g. `"roboticsProgress"`.
 4. Update all module-specific metadata in `index.html`: `<title>`, meta description, OG tags, JSON-LD, `<h1>`, canonical URL, and static welcome copy.
 5. Replace `levels.js` with the new module's roadmap structure.
