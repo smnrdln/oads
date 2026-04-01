@@ -11,6 +11,9 @@ Free, browser-based technical learning modules with structured lessons, exercise
 | ID  | Title | Status | Levels | Topics | Exercises | Scenarios | Languages |
 |-----|-------|--------|--------|--------|-----------|-----------|-----------|
 | pcb | Electronics & PCB Design Trainer | Active | 4 | 34 | 84 | 34 | EN, DE |
+| robotics | Robotics & Autonomy Trainer | Active | 4 | 24 | 72 | 24 | EN, DE |
+| computervision | Modern Computer Vision Trainer | Active | 4 | 29 | 87 | 29 | EN, DE |
+| rlrobotics | RL for Robotics Trainer | Active | 4 | 29 | 87 | 29 | EN, DE |
 
 ---
 
@@ -20,32 +23,24 @@ Free, browser-based technical learning modules with structured lessons, exercise
 /
 ├── assets/
 │   ├── css/
-│   │   └── engine.css        ← Shared stylesheet (all modules)
+│   │   ├── engine.css        ← Shared learning UI stylesheet
+│   │   └── oads-ads.css      ← Shared ad-rail layout and ad styles
 │   ├── js/
-│   │   ├── engine.js         ← Shared learning engine (all modules)
-│   │   └── i18n.js           ← Shared i18n runtime (all modules)
+│   │   ├── engine.js             ← Shared learning engine (all modules)
+│   │   ├── i18n.js               ← Shared i18n runtime (all modules)
+│   │   ├── oads-ads-config.js    ← Central AdSense slot config
+│   │   └── oads-ads.js           ← AdSense region-to-slot mounting logic
 │   ├── icons/                ← Favicon and PWA icons
 │   └── logo/                 ← Logo assets
 │
 ├── modules/
-│   └── pcb/                  ← PCB module (module-local files)
-│       ├── index.html        ← Module page (sets MODULE_CONFIG, loads shared assets)
-│       ├── levels.js         ← Module roadmap structure
-│       ├── level1.js         ← Lesson content (Level 1)
-│       ├── level2.js         ← Lesson content (Level 2)
-│       ├── level3.js         ← Lesson content (Level 3)
-│       ├── level4.js         ← Lesson content (Level 4)
-│       ├── exercises.js      ← Exercise data
-│       ├── scenarios.js      ← Scenario data
-│       └── lang/
-│           ├── en.js         ← English UI strings
-│           ├── de.js         ← German UI strings
-│           ├── manifest.js   ← i18n content file manifest
-│           └── de/
-│               ├── level1.js ← German lesson content (Level 1)
-│               ├── level2.js ← German lesson content (Level 2)
-│               ├── level3.js ← German lesson content (Level 3)
-│               └── level4.js ← German lesson content (Level 4)
+│   ├── pcb/                  ← Electronics & PCB Design Trainer
+│   ├── robotics/             ← Robotics & Autonomy Trainer
+│   ├── computervision/       ← Modern Computer Vision Trainer
+│   └── rlrobotics/           ← RL for Robotics Trainer
+│
+│   (Each module folder contains: index.html, levels.js, level1..4.js,
+│    exercises.js, scenarios.js, and lang/ with EN/DE content files)
 │
 ├── index.html                ← Root landing page
 ├── privacy.html              ← Privacy policy
@@ -101,7 +96,7 @@ The shared engine is designed so future learning modules can be added without ed
 - **`assets/js/i18n.js`** is reused by all modules for the same reason.
 - **`assets/css/engine.css`** is reused by all modules. Module-specific visual overrides, if ever needed, can be added via an additional module-local stylesheet loaded after the engine CSS.
 - **Each module owns only its content, metadata, and translations.** The engine knows nothing about PCB-specific content; it reads from a generic `roadmapData` global and the i18n content registry.
-- **Each module sets its own `MODULE_CONFIG.storageKey`** so progress is stored independently per module. A future "Robotics" module would set `storageKey: "roboticsProgress"`, keeping its data completely isolated.
+- **Each module sets its own `MODULE_CONFIG.storageKey`** so progress is stored independently per module (`electronicsProgress`, `roboticsProgress`, `computervisionProgress`, `rlroboticsProgress`).
 - **Future modules are addable without touching the shared engine** unless the behavior truly needs to change at the platform level.
 
 ---
@@ -118,12 +113,15 @@ The shared engine is designed so future learning modules can be added without ed
 
 ## Google AdSense notes
 
-- The AdSense loader script (`pagead2.googlesyndication.com`) is included in both `index.html` (root) and `modules/pcb/index.html`. Do not remove or alter these tags.
+- The AdSense loader script (`pagead2.googlesyndication.com`) is included in `index.html`, `privacy.html`, and each module `index.html`. Do not remove or alter these tags.
 - The AdSense client ID is `ca-pub-4757211359193207`. Do not change it.
 - `ads.txt` must remain at the repo root (`/ads.txt`) and must not be moved. GitHub Pages serves it at `https://openacademy.space/ads.txt`, which is where ad networks look for it.
 - Refactors must not move, wrap, defer, or otherwise disturb the AdSense loader script placement or attributes.
 - Static hosting is fully compatible with AdSense; no server-side configuration is needed.
-- Display ads use `assets/css/oads-ads.css`, `assets/js/oads-ads-config.js` (all IDs in one place), and `assets/js/oads-ads.js`. Root `index.html`, `privacy.html`, and each module `index.html` load the config then the loader. Set **`defaultSlot`** to one numeric ad unit ID to use it for every `data-oads-slot` region, or set **`slots.siteRail`** / **`slots.moduleRail`** (and add keys for new modules) for separate reporting. Empty slots with no `defaultSlot` collapse that region to full-width content. The PCB trainer is a single HTML document: the ad rail stays fixed while in-app “pages” change in JavaScript.
+- Display ads use `assets/css/oads-ads.css`, `assets/js/oads-ads-config.js` (all IDs in one place), and `assets/js/oads-ads.js`. Root `index.html` and `privacy.html` use `data-oads-slot="siteRail"`; modules use `data-oads-slot="moduleRail"`.
+- Set **`defaultSlot`** to one numeric ad unit ID to fill every region, or set **`slots.siteRail`** / **`slots.moduleRail`** for separate reporting.
+- Empty slot keys with no `defaultSlot` collapse that ad region to full-width content.
+- Each module is a single HTML document; the right ad rail stays fixed while in-app views change via JavaScript.
 
 ---
 
@@ -156,6 +154,9 @@ python3 -m http.server 8000
 Then open:
 - http://localhost:8000/ — root landing page
 - http://localhost:8000/modules/pcb/ — PCB trainer
+- http://localhost:8000/modules/robotics/ — Robotics trainer
+- http://localhost:8000/modules/computervision/ — Computer Vision trainer
+- http://localhost:8000/modules/rlrobotics/ — RL for Robotics trainer
 
 ---
 
