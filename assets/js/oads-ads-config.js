@@ -12,7 +12,7 @@ window.OADS_ADS = {
     client: 'ca-pub-4757211359193207',
     defaultSlot: '',
     slots: {
-        siteRail: '',
-        moduleRail: ''
+        siteRail: '5527467530',
+        moduleRail: '4879331358'
     }
 };
