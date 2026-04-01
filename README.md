@@ -162,4 +162,4 @@ Then open:
 
 ## License
 
-MIT
+[MIT](LICENSE)
