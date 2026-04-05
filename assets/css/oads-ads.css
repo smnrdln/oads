@@ -5,17 +5,49 @@
     --oads-ad-rail-min: 240px;
     --oads-ad-gap: 22px;
     --oads-ad-border: rgba(148, 163, 184, 0.2);
-    --oads-ad-bg: rgba(255, 255, 255, 0.03);
+    --oads-ad-bg: transparent;
     --oads-ad-muted: rgba(148, 163, 184, 0.85);
 }
 
 :root[data-theme='light'] {
     --oads-ad-border: rgba(15, 23, 42, 0.12);
-    --oads-ad-bg: rgba(15, 23, 42, 0.04);
+    --oads-ad-bg: transparent;
     --oads-ad-muted: rgba(71, 85, 105, 0.9);
 }
 
-/* ── Home (marketing) page ── */
+/* ── Shared shell base ── */
+.oads-ad-shell {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 18px;
+    border: 1px solid var(--oads-ad-border);
+    /* No fixed min-height here — breakpoint rules set it below */
+}
+
+.oads-ad-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oads-ad-muted);
+    padding: 8px 14px 4px;
+}
+
+.oads-ad-inner {
+    display: block;
+    overflow: hidden;
+}
+
+.oads-ad-inner .adsbygoogle {
+    display: block;
+    width: 100% !important;
+}
+
+/* ── Home (marketing) page layout ── */
 .oads-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(var(--oads-ad-rail-min), var(--oads-ad-rail-max));
@@ -39,39 +71,6 @@
 
 .oads-ad-rail--empty {
     display: none !important;
-}
-
-.oads-ad-shell {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 14px;
-    border-radius: 18px;
-    border: 1px solid var(--oads-ad-border);
-    background: var(--oads-ad-bg);
-    min-height: 250px;
-    box-sizing: border-box;
-}
-
-.oads-ad-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--oads-ad-muted);
-}
-
-.oads-ad-inner {
-    flex: 1;
-    min-height: 200px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.oads-ad-inner .adsbygoogle {
-    width: 100% !important;
 }
 
 /* ── Module trainer (engine layout) ── */
@@ -106,7 +105,6 @@
 .oads-module-ad-rail .oads-ad-shell {
     position: sticky;
     top: 12px;
-    min-height: 280px;
     background: var(--color-bg-secondary);
     border-color: var(--color-border);
 }
@@ -115,7 +113,23 @@
     display: none;
 }
 
-@media (max-width: 1100px) {
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE BREAKPOINTS
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Desktop (> 1024px): full rail, correct size constraints ── */
+@media (min-width: 1025px) {
+    .oads-layout__rail .oads-ad-shell,
+    .oads-module-ad-rail .oads-ad-shell {
+        min-height: 90px;            /* CLS guard — prevents layout shift */
+        max-width: var(--oads-ad-rail-max);
+        overflow: hidden;
+    }
+}
+
+/* ── Tablet (768px – 1024px): sidebar rail constrained to 300px or hidden ── */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Home/privacy layout collapses to single column */
     .oads-layout {
         grid-template-columns: minmax(0, 1fr);
     }
@@ -131,6 +145,16 @@
         order: 0;
     }
 
+    /* Rail ad on tablet: constrain to 300px max */
+    .oads-layout__rail .oads-ad-shell,
+    .oads-module-ad-rail .oads-ad-shell {
+        max-width: 300px;
+        min-height: 90px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    /* Module stage collapses to column */
     .oads-module-stage {
         flex-direction: column;
     }
@@ -146,7 +170,50 @@
 
     .oads-module-ad-rail .oads-ad-shell {
         position: static;
-        max-width: min(100%, 360px);
+        max-width: 300px;
         margin: 0 auto;
+    }
+}
+
+/* ── Mobile (< 768px): hide all rail/sidebar ads entirely ── */
+@media (max-width: 767px) {
+    /* Completely hide rail and module rail ad shells on mobile */
+    .oads-ad-shell[data-oads-slot="siteRail"],
+    .oads-ad-shell[data-oads-slot="moduleRail"] {
+        display: none !important;
+    }
+
+    /* Also collapse the container wrappers so they take no space */
+    .oads-layout__rail,
+    .oads-module-ad-rail {
+        display: none !important;
+    }
+
+    /* Home layout: single column */
+    .oads-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Module stage: single column */
+    .oads-module-stage {
+        flex-direction: column;
+    }
+
+    /* Mobile banner (injected by JS for < 768px only) */
+    .oads-ad-shell[data-oads-slot="mobileBanner"] {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 50px;    /* CLS guard */
+        overflow: hidden;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        background: transparent;
+        margin: 0;
+    }
+
+    .oads-ad-shell[data-oads-slot="mobileBanner"] .oads-ad-inner {
+        min-height: 50px;
     }
 }
