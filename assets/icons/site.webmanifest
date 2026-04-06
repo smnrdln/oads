@@ -1,7 +1,7 @@
 {
   "name": "Open Academy Dot Space",
   "short_name": "Open Academy",
-  "description": "Free interactive learning modules in electronics, PCB design, robotics, computer vision, and reinforcement learning.",
+  "description": "Free interactive learning modules in electronics, PCB design, robotics, computer vision, and reinforcement learning. No login or account required.",
   "start_url": "/",
   "scope": "/",
   "icons": [
