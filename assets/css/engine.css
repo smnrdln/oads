@@ -63,7 +63,7 @@ body {
    ══════════════════════════════════════ */
 .app-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     gap: 16px;
     padding: 12px 24px;
@@ -72,11 +72,187 @@ body {
     flex-shrink: 0;
 }
 
+/* ══ Mobile collapsible trainer header ══
+   Desktop: normal flex row (strip hidden)
+   Mobile:  narrow strip (logo + stats) → tap to expand full header */
+
+.header-app-strip {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    text-align: left;
+    line-height: 1;
+    min-height: 0;
+    font: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.header-app-strip:focus-visible {
+    outline: 2px solid var(--color-accent);
+    border-radius: 8px;
+}
+
+.app-logo--strip {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.app-logo--strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Compact inline stats text */
+.header-strip-stats {
+    flex: 1;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+    padding: 0;
+    margin: 0;
+}
+
+/* Chevron — rotates on open */
+.header-app-strip-chevron {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    color: var(--color-text-secondary);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    display: block;
+}
+
+.app-header--open .header-app-strip-chevron {
+    transform: rotate(180deg);
+}
+
+/* Panel: hidden by default on mobile, slides down */
+.header-app-panel {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header-app-panel-inner {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+    width: 100%;
+}
+
+.header-app-panel-toolbar {
+    display: none; /* removed; strip is the single toggle */
+}
+
+/* Collapse btn inside panel — hidden (strip does the job) */
+.header-app-collapse { display: none; }
+
+.header-main-row {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+    width: 100%;
+}
+
 .header-left {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
+}
+
+/* Desktop-only header stats (hidden on mobile — narrow strip shows summary) */
+.header-stats-desktop {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header-stats {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.header-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-stat-text {
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+.progress-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: conic-gradient(var(--color-accent) 0deg, var(--color-bg-tertiary) 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.progress-circle::before {
+    content: '';
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-bg-secondary);
+}
+
+.progress-circle span {
+    position: relative;
+    z-index: 1;
+    font-size: 0.75rem;
+}
+
+.stat-value-sm {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-accent);
+    min-width: 40px;
+    text-align: center;
 }
 
 .app-logo {
@@ -201,59 +377,6 @@ body {
 .lang-switcher option {
     background: var(--color-bg-secondary);
     color: var(--color-text-primary);
-}
-
-.header-stats {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-}
-
-.header-stat {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.header-stat-text {
-    font-size: 0.85rem;
-    line-height: 1.3;
-}
-
-.progress-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: conic-gradient(var(--color-accent) 0deg, var(--color-bg-tertiary) 0deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    position: relative;
-    flex-shrink: 0;
-}
-
-.progress-circle::before {
-    content: '';
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--color-bg-secondary);
-}
-
-.progress-circle span {
-    position: relative;
-    z-index: 1;
-    font-size: 0.75rem;
-}
-
-.stat-value-sm {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-accent);
-    min-width: 40px;
-    text-align: center;
 }
 
 /* ══════════════════════════════════════
@@ -1206,23 +1329,105 @@ mark.search-highlight {
    ══════════════════════════════════════ */
 @media (max-width: 900px) {
     .app-header {
-        flex-wrap: wrap;
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px 12px;
+        gap: 0;
+        border-bottom: 1px solid var(--color-bg-tertiary);
     }
 
-    .header-left {
-        gap: 10px;
+    .header-app-strip {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 0;
+    }
+
+    /* Closed: take no layout space (was leaving a gap under the strip) */
+    .header-app-panel:not(.is-open) {
+        max-height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .header-app-panel:not(.is-open) .header-app-panel-inner {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .header-app-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        width: 100%;
+        flex: none;
+        align-self: stretch;
+        min-height: 0;
+        transition: grid-template-rows 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 0.26s ease,
+                    max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .header-app-panel.is-open {
+        grid-template-rows: 1fr;
+        max-height: min(70vh, 520px);
+        opacity: 1;
+        pointer-events: auto;
+        overflow: hidden;
+    }
+
+    .header-app-panel.is-open .header-app-panel-inner {
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .header-app-panel-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        overflow: hidden;
+        min-height: 0;
+        padding-top: 8px;
+        border-top: 1px solid var(--color-bg-tertiary);
+        margin-top: 6px;
+    }
+
+    .header-main-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
         width: 100%;
     }
 
-    .app-logo {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
+    .header-left {
+        gap: 8px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .header-left .app-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .header-stats-desktop {
+        display: none;
     }
 
     .header-controls {
-        gap: 10px;
+        gap: 8px;
+        margin-left: auto;
+    }
+
+    .app-header h1 {
+        flex: 1;
+        min-width: 0;
     }
 
     .sidebar {
@@ -1257,12 +1462,6 @@ mark.search-highlight {
         width: 36px;
         height: 36px;
         font-size: 0.95rem;
-    }
-
-    .header-stats {
-        gap: 12px;
-        width: 100%;
-        justify-content: flex-start;
     }
 
     .main-content {
@@ -1317,4 +1516,18 @@ mark.search-highlight {
 @keyframes slideOut {
     from { transform: translateX(0); opacity: 1; }
     to { transform: translateX(100px); opacity: 0; }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+    .header-app-panel {
+        transition: none;
+    }
+
+    .header-app-strip-chevron {
+        transition: none;
+    }
+}
+
+:root[data-theme='light'] .header-strip-stats {
+    color: var(--color-text-secondary);
 }

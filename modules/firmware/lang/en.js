@@ -9,6 +9,12 @@ i18n.registerLanguage('en', 'English', {
     'header.xp': 'XP',
     'header.level': 'Level %s',
     'header.streak': 'Streak',
+    'header.statsToggle.expand': 'Show progress, XP, and streak details',
+    'header.statsToggle.expandWithSummary': 'Show progress, XP, and streak details (currently %s)',
+    'header.statsToggle.collapse': 'Hide progress, XP, and streak details',
+    'header.appToggle.expand': 'Open full header (%s)',
+    'header.appToggle.collapse': 'Close full header',
+    'header.appToggle.collapseLabel': 'Close header',
 
     'sidebar.title': '📚 Course Outline',
     'sidebar.menu': 'Menu',

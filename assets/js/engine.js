@@ -31,6 +31,8 @@ const collapsedLevelGroups = new Set();
 
 const themeStorageKey = 'appTheme';
 const searchInputId = 'sidebarSearchInput';
+const headerAppPanelStorageKey = 'oadsAppHeaderPanel';
+const headerStatsMobileMq = '(max-width: 900px)';
 
 const _storageKey = (window.MODULE_CONFIG && window.MODULE_CONFIG.storageKey)
     ? window.MODULE_CONFIG.storageKey
@@ -402,6 +404,119 @@ function clearSearch() {
     restoreSearchFocus(0, 0);
 }
 
+function syncAppHeaderOpenClass() {
+    const header = document.getElementById('appHeader');
+    const panel = document.getElementById('headerAppPanel');
+    if (!header || !panel) return;
+    header.classList.toggle('app-header--open', panel.classList.contains('is-open'));
+}
+
+function updateAppHeaderToggleAccessibility() {
+    const expandBtn = document.getElementById('headerAppExpandBtn');
+    if (!expandBtn) return;
+    const title = t('app.title');
+
+    if (!isHeaderStatsMobileViewport()) {
+        expandBtn.setAttribute('tabindex', '-1');
+        expandBtn.setAttribute('aria-hidden', 'true');
+        expandBtn.setAttribute('aria-expanded', 'true');
+        return;
+    }
+
+    expandBtn.removeAttribute('tabindex');
+    expandBtn.removeAttribute('aria-hidden');
+    const panel = document.getElementById('headerAppPanel');
+    const open = panel && panel.classList.contains('is-open');
+    expandBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    expandBtn.setAttribute('aria-label', open
+        ? t('header.appToggle.collapse')
+        : t('header.appToggle.expand', title));
+}
+
+function applyAppHeaderPanelLayout() {
+    const panel = document.getElementById('headerAppPanel');
+    const header = document.getElementById('appHeader');
+    if (!panel || !header) {
+        return;
+    }
+
+    const expandBtn = document.getElementById('headerAppExpandBtn');
+
+    if (!isHeaderStatsMobileViewport()) {
+        panel.classList.add('is-open');
+        syncAppHeaderOpenClass();
+        if (expandBtn) {
+            expandBtn.setAttribute('aria-expanded', 'true');
+            expandBtn.setAttribute('aria-hidden', 'true');
+            expandBtn.setAttribute('tabindex', '-1');
+        }
+        updateAppHeaderToggleAccessibility();
+        return;
+    }
+
+    if (expandBtn) {
+        expandBtn.removeAttribute('aria-hidden');
+        expandBtn.removeAttribute('tabindex');
+    }
+
+    let expanded = false;
+    try { expanded = sessionStorage.getItem(headerAppPanelStorageKey) === 'expanded'; } catch (e) {}
+    if (expanded) {
+        panel.classList.add('is-open');
+    } else {
+        panel.classList.remove('is-open');
+    }
+    syncAppHeaderOpenClass();
+    updateAppHeaderToggleAccessibility();
+}
+
+function setAppHeaderPanelOpen(willOpen) {
+    const panel = document.getElementById('headerAppPanel');
+    if (!panel) return;
+    if (willOpen) {
+        panel.classList.add('is-open');
+        try { sessionStorage.setItem(headerAppPanelStorageKey, 'expanded'); } catch (e) {}
+    } else {
+        panel.classList.remove('is-open');
+        try { sessionStorage.removeItem(headerAppPanelStorageKey); } catch (e) {}
+    }
+    syncAppHeaderOpenClass();
+    const expandBtn = document.getElementById('headerAppExpandBtn');
+    if (expandBtn) expandBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    updateAppHeaderToggleAccessibility();
+}
+
+function toggleAppHeaderPanel() {
+    if (!isHeaderStatsMobileViewport()) return;
+    const panel = document.getElementById('headerAppPanel');
+    if (!panel) return;
+    setAppHeaderPanelOpen(!panel.classList.contains('is-open'));
+}
+
+function initAppHeaderPanel() {
+    const panel = document.getElementById('headerAppPanel');
+    if (!panel) {
+        return;
+    }
+    const expandBtn = document.getElementById('headerAppExpandBtn');
+    if (expandBtn && !expandBtn.dataset.appToggleBound) {
+        expandBtn.dataset.appToggleBound = '1';
+        expandBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleAppHeaderPanel();
+        });
+    }
+    const mq = window.matchMedia(headerStatsMobileMq);
+    const apply = () => applyAppHeaderPanelLayout();
+    apply();
+    if (mq.addEventListener) mq.addEventListener('change', apply);
+    else if (mq.addListener) mq.addListener(apply);
+}
+
+function isHeaderStatsMobileViewport() {
+    return window.matchMedia && window.matchMedia(headerStatsMobileMq).matches;
+}
+
 function updateStaticTexts() {
     const appTitle = document.getElementById('appTitle');
     if (appTitle) appTitle.textContent = t('app.title');
@@ -432,6 +547,7 @@ function updateStaticTexts() {
 
     updateThemeToggle();
     document.title = t('app.title');
+    updateAppHeaderToggleAccessibility();
 }
 
 // ════════════════════════════════════════════════
@@ -490,14 +606,27 @@ function updateProgressDisplay() {
     });
 
     const percentage = totalTopics > 0 ? Math.round((completedCount / totalTopics) * 100) : 0;
-    document.getElementById('overallProgress').style.background =
-        `conic-gradient(var(--color-accent) ${percentage * 3.6}deg, var(--color-bg-tertiary) 0deg)`;
-    document.getElementById('overallProgress').querySelector('span').textContent = `${percentage}%`;
-    document.getElementById('completedTopics').textContent = completedCount;
-    document.getElementById('totalTopics').textContent = totalTopics;
-    document.getElementById('xpDisplay').textContent = userProgress.xp;
-    document.getElementById('levelDisplay').textContent = t('header.level', userProgress.level);
-    document.getElementById('streakCount').textContent = userProgress.streak;
+
+    const stripStats = document.getElementById('headerStripStats');
+    if (stripStats) stripStats.textContent = `${percentage}% · ${userProgress.xp} XP · ${userProgress.streak} 🔥`;
+
+    const overallProgress = document.getElementById('overallProgress');
+    if (overallProgress) {
+        overallProgress.style.background =
+            `conic-gradient(var(--color-accent) ${percentage * 3.6}deg, var(--color-bg-tertiary) 0deg)`;
+        const pctSpan = overallProgress.querySelector('span');
+        if (pctSpan) pctSpan.textContent = `${percentage}%`;
+    }
+    const completedEl = document.getElementById('completedTopics');
+    if (completedEl) completedEl.textContent = completedCount;
+    const totalEl = document.getElementById('totalTopics');
+    if (totalEl) totalEl.textContent = totalTopics;
+    const xpEl = document.getElementById('xpDisplay');
+    if (xpEl) xpEl.textContent = userProgress.xp;
+    const levelEl = document.getElementById('levelDisplay');
+    if (levelEl) levelEl.textContent = t('header.level', userProgress.level);
+    const streakEl = document.getElementById('streakCount');
+    if (streakEl) streakEl.textContent = userProgress.streak;
 
     checkAchievements();
 }
@@ -1170,6 +1299,7 @@ document.addEventListener('keydown', (e) => {
 loadProgress();
 updateStaticTexts();
 updateProgressDisplay();
+initAppHeaderPanel();
 renderSidebar();
 updateLanguageSwitcher();
 showWelcome();

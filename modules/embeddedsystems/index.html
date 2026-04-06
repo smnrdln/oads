@@ -113,7 +113,24 @@
 </head>
 
 <body>
-    <header class="app-header">
+    <header class="app-header" id="appHeader">
+        <button type="button" class="header-app-strip" id="headerAppExpandBtn"
+            aria-controls="headerAppPanel" aria-expanded="false">
+            <div class="app-logo--strip" aria-hidden="true">
+                <img src="../../assets/logo/oads-transparent-256.png"
+                    srcset="../../assets/logo/oads-transparent-256.png 1x, ../../assets/logo/oads-transparent-512.png 2x"
+                    alt="" width="32" height="32">
+            </div>
+            <span class="header-strip-stats" id="headerStripStats" aria-hidden="true">0% · 0 XP · 0 🔥</span>
+            <svg class="header-app-strip-chevron" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </button>
+        <div class="header-app-panel" id="headerAppPanel">
+            <div class="header-app-panel-inner">
+                <div class="header-main-row">
         <div class="header-left">
             <div class="app-logo">
                 <img src="../../assets/logo/oads-transparent-256.png"
@@ -130,24 +147,29 @@
                 </div>
             </div>
         </div>
-        <div class="header-stats">
-            <div class="header-stat">
-                <div class="progress-circle" id="overallProgress"><span>0%</span></div>
-                <div class="header-stat-text">
-                    <strong id="headerProgressLabel">Progress</strong><br>
-                    <span id="completedTopics">0</span> / <span id="totalTopics">0</span>
+        <div class="header-stats-desktop" aria-label="Progress summary">
+            <div class="header-stats">
+                <div class="header-stat">
+                    <div class="progress-circle" id="overallProgress"><span>0%</span></div>
+                    <div class="header-stat-text">
+                        <strong id="headerProgressLabel">Progress</strong><br>
+                        <span id="completedTopics">0</span> / <span id="totalTopics">0</span>
+                    </div>
+                </div>
+                <div class="header-stat">
+                    <div class="stat-value-sm" id="xpDisplay">0</div>
+                    <div class="header-stat-text">
+                        <strong id="headerXPLabel">XP</strong><br>
+                        <span id="levelDisplay">Level 1</span>
+                    </div>
+                </div>
+                <div class="header-stat">
+                    <div class="stat-value-sm" id="streakCount">0</div>
+                    <div class="header-stat-text"><strong id="headerStreakLabel">Streak</strong></div>
                 </div>
             </div>
-            <div class="header-stat">
-                <div class="stat-value-sm" id="xpDisplay">0</div>
-                <div class="header-stat-text">
-                    <strong id="headerXPLabel">XP</strong><br>
-                    <span id="levelDisplay">Level 1</span>
-                </div>
-            </div>
-            <div class="header-stat">
-                <div class="stat-value-sm" id="streakCount">0</div>
-                <div class="header-stat-text"><strong id="headerStreakLabel">Streak</strong></div>
+        </div>
+        </div>
             </div>
         </div>
     </header>
