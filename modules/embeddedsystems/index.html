@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Interactive embedded systems and microcontrollers trainer with structured lessons, exercises, real-world scenarios, progress tracking, and English/German support.">
+    <meta name="keywords"
+        content="embedded systems, microcontrollers, firmware, RTOS, IoT, ARM Cortex-M, C programming, electronics, learning, training">
+    <meta name="author" content="Saman Ardalan">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-adsense-account" content="ca-pub-4757211359193207">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../assets/icons/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../../assets/icons/android-chrome-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="../../assets/icons/site.webmanifest">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://openacademy.space/modules/embeddedsystems/">
+    <meta property="og:title" content="Embedded Systems &amp; Microcontrollers Trainer — Open Academy Dot Space">
+    <meta property="og:description"
+        content="Learn embedded systems, microcontroller firmware, peripherals, and practical engineering through lessons, exercises, and real-world scenarios.">
+    <meta property="og:site_name" content="Open Academy Dot Space">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://openacademy.space/assets/logo/oads-transparent-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:alt" content="Open Academy Dot Space logo">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Embedded Systems &amp; Microcontrollers Trainer — Open Academy Dot Space">
+    <meta name="twitter:description"
+        content="Interactive embedded systems learning app with progress tracking, exercises, scenarios, and localization support.">
+    <meta name="twitter:image" content="https://openacademy.space/assets/logo/oads-transparent-512.png">
+    <title>Embedded Systems &amp; Microcontrollers Trainer — Open Academy Dot Space</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4757211359193207"
+        crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "Course",
+                "name": "Embedded Systems &amp; Microcontrollers Trainer",
+                "description": "Interactive embedded systems and microcontrollers trainer with lessons, exercises, practical scenarios, progress tracking, and localization support.",
+                "url": "https://openacademy.space/modules/embeddedsystems/",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "Open Academy Dot Space",
+                    "url": "https://openacademy.space/"
+                },
+                "inLanguage": ["en", "de"],
+                "isAccessibleForFree": true,
+                "educationalLevel": "Beginner to Advanced",
+                "teaches": "Microcontrollers, peripherals, RTOS, drivers, bootloaders, security, IoT protocols, and system integration",
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "online",
+                    "courseWorkload": "PT5H"
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": "Saman Ardalan"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://openacademy.space/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Embedded Systems &amp; Microcontrollers Trainer",
+                        "item": "https://openacademy.space/modules/embeddedsystems/"
+                    }
+                ]
+            }
+        ]
+    </script>
+    <script>
+        window.MODULE_CONFIG = {
+            id: "embeddedsystems",
+            storageKey: "embeddedSystemsProgress"
+        };
+    </script>
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem('appTheme');
+                const theme = savedTheme === 'light' || savedTheme === 'dark'
+                    ? savedTheme
+                    : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.style.colorScheme = theme;
+            } catch (error) {
+                document.documentElement.dataset.theme = 'dark';
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://openacademy.space/modules/embeddedsystems/">
+    <link rel="stylesheet" href="../../assets/css/engine.css">
+    <link rel="stylesheet" href="../../assets/css/oads-ads.css">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <div class="app-logo">
+                <img src="../../assets/logo/oads-transparent-256.png"
+                    srcset="../../assets/logo/oads-transparent-256.png 1x, ../../assets/logo/oads-transparent-512.png 2x"
+                    alt="Open Academy Dot Space logo" width="56" height="56" loading="lazy">
+            </div>
+            <h1 id="appTitle">Embedded Systems &amp; Microcontrollers Trainer</h1>
+            <a class="repo-link" href="https://github.com/smnrdln/oads" target="_blank" rel="noopener noreferrer"
+                aria-label="Open the GitHub repository for this project">GitHub</a>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle" type="button" onclick="toggleTheme()"></button>
+                <div class="lang-switcher-wrap">
+                    <select id="langSwitcher" class="lang-switcher" onchange="i18n.setLanguage(this.value)"></select>
+                </div>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="header-stat">
+                <div class="progress-circle" id="overallProgress"><span>0%</span></div>
+                <div class="header-stat-text">
+                    <strong id="headerProgressLabel">Progress</strong><br>
+                    <span id="completedTopics">0</span> / <span id="totalTopics">0</span>
+                </div>
+            </div>
+            <div class="header-stat">
+                <div class="stat-value-sm" id="xpDisplay">0</div>
+                <div class="header-stat-text">
+                    <strong id="headerXPLabel">XP</strong><br>
+                    <span id="levelDisplay">Level 1</span>
+                </div>
+            </div>
+            <div class="header-stat">
+                <div class="stat-value-sm" id="streakCount">0</div>
+                <div class="header-stat-text"><strong id="headerStreakLabel">Streak</strong></div>
+            </div>
+        </div>
+    </header>
+
+    <button class="mobile-toggle" id="mobileSidebarToggle" type="button" onclick="toggleSidebar()"
+        aria-controls="sidebar" aria-expanded="false" aria-label="Menu" title="Menu">☰</button>
+
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 id="sidebarTitle">📚 Course Outline</h2>
+                <button class="sidebar-toggle" id="sidebarToggle" type="button" onclick="toggleSidebar()"
+                    aria-controls="sidebar" aria-expanded="false">☰</button>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <div class="sidebar-fallback">
+                    <p>This trainer covers a four-level learning path with lessons, exercises, and scenarios.</p>
+                    <ul>
+                        <li>Level 1: Beginner foundations</li>
+                        <li>Level 2: Intermediate design work</li>
+                        <li>Level 3: Advanced engineering topics</li>
+                        <li>Level 4: Post-advanced review and production thinking</li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="oads-module-stage">
+        <main class="main-content" id="mainContent">
+            <div class="welcome-view welcome-view-static">
+                <h2>Welcome to the Embedded Systems &amp; Microcontrollers Trainer</h2>
+                <p>
+                    This browser-based learning app teaches embedded systems and microcontroller firmware through structured lessons,
+                    interactive exercises, and practical scenarios. JavaScript powers the full trainer experience, but
+                    the course scope is outlined below for fast first paint and non-JavaScript readers.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">Learning Levels</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">20</div>
+                        <div class="stat-label">Topics</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">42</div>
+                        <div class="stat-label">Exercises</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">20</div>
+                        <div class="stat-label">Scenarios</div>
+                    </div>
+                </div>
+
+                <div class="static-summary">
+                    <h3>What this trainer includes</h3>
+                    <ul>
+                        <li>binary logic, MCU architecture, and embedded C</li>
+                        <li>UART/SPI/I2C, timers, ADCs, memory maps, and power-aware design</li>
+                        <li>RTOS primitives, drivers, debug, bootloaders, security, IoT links, and integration practice</li>
+                        <li>local progress tracking directly in the browser</li>
+                        <li>English and German support</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <aside class="oads-module-ad-rail" aria-label="Advertisement">
+            <div class="oads-ad-shell" data-oads-slot="moduleRail">
+                <span class="oads-ad-label">Ad</span>
+                <div class="oads-ad-inner"></div>
+            </div>
+        </aside>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="site-footer-links">
+            <span>Open Academy module: Embedded Systems &amp; Microcontrollers Trainer</span>
+            <a href="https://openacademy.space/">Open Academy</a>
+            <a href="https://openacademy.space/privacy.html">Privacy Policy</a>
+            <a href="https://github.com/smnrdln/oads" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/smnrdln/oads/issues" target="_blank"
+                rel="noopener noreferrer">Contact</a>
+        </div>
+    </footer>
+
+    <noscript>
+        <div class="noscript-banner">
+            JavaScript is required for the interactive trainer UI. The static overview above remains available, and the
+            full open-source project is linked in the footer.
+        </div>
+    </noscript>
+
+    <script src="../../assets/js/i18n.js"></script>
+    <script src="lang/en.js"></script>
+    <script src="lang/de.js"></script>
+    <script src="lang/manifest.js"></script>
+    <script src="level1.js"></script>
+    <script src="level2.js"></script>
+    <script src="level3.js"></script>
+    <script src="level4.js"></script>
+    <script src="exercises.js"></script>
+    <script src="scenarios.js"></script>
+    <script src="levels.js"></script>
+    <script src="../../assets/js/engine.js"></script>
+    <script src="../../assets/js/oads-ads-config.js"></script>
+    <script src="../../assets/js/oads-ads.js"></script>
+</body>
+
+</html>
