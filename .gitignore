@@ -1,2 +1,4 @@
 scripts/resize-logos.sh
 tmp/*
+tests/test_tinyml_structure.py
+scripts/verify_sensorfusion_module.py

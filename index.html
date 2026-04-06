@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Free interactive learning modules in electronics, PCB design, robotics, computer vision, and reinforcement learning. Browser-based, no account needed.">
-    <meta name="keywords" content="free learning modules, electronics, PCB design, robotics, computer vision, reinforcement learning, engineering education, open academy">
+        content="Free interactive learning modules in electronics, PCB design, robotics, computer vision, reinforcement learning, sensor fusion, firmware and RTOS, and TinyML / edge AI. Browser-based, no account needed.">
+    <meta name="keywords" content="free learning modules, electronics, PCB design, robotics, computer vision, reinforcement learning, sensor fusion, firmware, RTOS, signal processing, engineering education, open academy">
     <meta name="author" content="Saman Ardalan">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-adsense-account" content="ca-pub-4757211359193207">
@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://openacademy.space/">
     <meta property="og:title" content="Open Academy Dot Space — Free Tech &amp; Engineering Learning Modules">
     <meta property="og:description"
-        content="Free interactive learning modules in electronics, PCB design, robotics, computer vision, and reinforcement learning. Browser-based, no account needed.">
+        content="Free interactive learning modules in electronics, PCB design, robotics, computer vision, reinforcement learning, sensor fusion, firmware and RTOS, and TinyML / edge AI. Browser-based, no account needed.">
     <meta property="og:site_name" content="Open Academy Dot Space">
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="https://openacademy.space/assets/logo/oads-transparent-512.png">
@@ -33,7 +33,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Open Academy Dot Space — Free Tech &amp; Engineering Learning Modules">
     <meta name="twitter:description"
-        content="Free interactive learning modules in electronics, PCB design, robotics, computer vision, and reinforcement learning. Browser-based, no account needed.">
+        content="Free interactive learning modules in electronics, PCB design, robotics, computer vision, reinforcement learning, sensor fusion, firmware and RTOS, and TinyML / edge AI. Browser-based, no account needed.">
     <meta name="twitter:image" content="https://openacademy.space/assets/logo/oads-transparent-512.png">
     <title>Open Academy Dot Space — Free Electronics, Robotics &amp; AI Learning</title>
     <script type="application/ld+json">
@@ -60,7 +60,7 @@
                 "@id": "https://openacademy.space/#website",
                 "url": "https://openacademy.space/",
                 "name": "Open Academy Dot Space",
-                "description": "Free interactive learning modules in electronics, PCB design, robotics, computer vision, and reinforcement learning.",
+                "description": "Free interactive learning modules in electronics, PCB design, robotics, computer vision, reinforcement learning, sensor fusion, firmware and RTOS, and TinyML / edge AI.",
                 "publisher": { "@id": "https://openacademy.space/#organization" },
                 "inLanguage": ["en", "de"]
             },
@@ -69,7 +69,7 @@
                 "@id": "https://openacademy.space/#webpage",
                 "url": "https://openacademy.space/",
                 "name": "Open Academy Dot Space — Free Electronics, Robotics & AI Learning",
-                "description": "Free interactive learning modules in electronics, PCB design, robotics, computer vision, and reinforcement learning.",
+                "description": "Free interactive learning modules in electronics, PCB design, robotics, computer vision, reinforcement learning, sensor fusion, firmware and RTOS, and TinyML / edge AI.",
                 "isPartOf": { "@id": "https://openacademy.space/#website" },
                 "about": { "@id": "https://openacademy.space/#organization" },
                 "inLanguage": "en"
@@ -83,7 +83,7 @@
                         "name": "What will I learn?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Topics across tech, AI, electronics, robotics, and engineering. Current modules cover electronics and PCB design, robotics and autonomy, modern computer vision, and reinforcement learning for robotics."
+                            "text": "Topics across tech, AI, electronics, robotics, and engineering. Current modules cover electronics and PCB design, robotics and autonomy, modern computer vision, reinforcement learning for robotics, and sensor fusion with signal processing."
                         }
                     },
                     {
@@ -683,7 +683,12 @@
                     <a class="button button-secondary" href="modules/pcb/">Open the PCB trainer</a>
                     <a class="button button-secondary" href="modules/robotics/">Open the Robotics trainer</a>
                     <a class="button button-secondary" href="modules/computervision/">Open the Computer Vision trainer</a>
+                    <a class="button button-secondary" href="modules/ros2/">Open the ROS 2 course</a>
                     <a class="button button-secondary" href="modules/rlrobotics/">Open the RL for Robotics trainer</a>
+                    <a class="button button-secondary" href="modules/embeddedsystems/">Open the Embedded Systems trainer</a>
+                    <a class="button button-secondary" href="modules/firmware/">Open the Firmware &amp; RTOS trainer</a>
+                    <a class="button button-secondary" href="modules/sensorfusion/">Open the Sensor Fusion trainer</a>
+                    <a class="button button-secondary" href="modules/tinyml/">Open the TinyML &amp; Edge AI trainer</a>
                 </div>
                 <div class="hero-meta" aria-label="Open Academy Dot Space summary">
                     <span>Free modules</span>
@@ -822,6 +827,59 @@
                     </article>
                     <article class="module-card">
                         <div>
+                            <div class="module-kicker">Embedded systems</div>
+                            <h3>Embedded Systems &amp; Microcontrollers Trainer</h3>
+                            <p>
+                                From digital logic and MCU architecture through serial buses, timers, ADCs, memory maps,
+                                RTOSes, drivers, debug, bootloaders, security, IoT protocols, performance tuning, co-design,
+                                safety, and a capstone integration project — with lessons, exercises, and scenarios in
+                                English and German.
+                            </p>
+                            <div class="module-tags" aria-label="Embedded systems module features">
+                                <span>Lessons</span>
+                                <span>Exercises</span>
+                                <span>Scenarios</span>
+                                <span>Progress tracking</span>
+                                <span>English and German</span>
+                            </div>
+                        </div>
+                        <div class="module-side">
+                            <div>
+                                <strong>Embedded</strong>
+                                <span>Firmware foundations through integration and production thinking.</span>
+                            </div>
+                            <a class="button button-primary" href="modules/embeddedsystems/">Open module</a>
+                        </div>
+                    </article>
+                    <article class="module-card">
+                        <div>
+                            <div class="module-kicker">Firmware &amp; RTOS</div>
+                            <h3>Firmware &amp; RTOS Trainer</h3>
+                            <p>
+                                Bare-metal memory maps and C, GPIO and interrupts, timers and clocks, RTOS scheduling and
+                                IPC, real-time analysis, drivers and serial buses, low power and multicore, bootloaders and
+                                secure boot, safety evidence, testing and CI/HIL, plus a capstone view — with lessons,
+                                exercises, and scenarios in English and German UI.
+                            </p>
+                            <div class="module-tags" aria-label="Firmware and RTOS module features">
+                                <span>Lessons</span>
+                                <span>Exercises</span>
+                                <span>Scenarios</span>
+                                <span>Progress tracking</span>
+                                <span>English and German</span>
+                            </div>
+                        </div>
+                        <div class="module-side">
+                            <div>
+                                <strong>RTOS</strong>
+                                <span>From bare metal to production real-time firmware practice.</span>
+                            </div>
+                            <a class="button button-primary" href="modules/firmware/">Open module</a>
+                        </div>
+                    </article>
+
+                    <article class="module-card">
+                        <div>
                             <div class="module-kicker">Reinforcement learning</div>
                             <h3>RL for Robotics Trainer</h3>
                             <p>
@@ -846,6 +904,85 @@
                             <a class="button button-primary" href="modules/rlrobotics/">Open module</a>
                         </div>
                     </article>
+                    <article class="module-card">
+                        <div>
+                            <div class="module-kicker">ROS 2</div>
+                            <h3>ROS 2 Interactive Course</h3>
+                            <p>
+                                From architecture, DDS, and the computation graph through simulation, Nav2, MoveIt 2,
+                                perception, real-time executors, multi-robot setups, security, testing, CI/CD, and a
+                                full-stack capstone — aligned to the ROS 2 interactive curriculum, with quizzes and
+                                scenarios. Lesson text is English; the UI supports English and German.
+                            </p>
+                            <div class="module-tags" aria-label="ROS 2 module features">
+                                <span>30 topics</span>
+                                <span>Exercises</span>
+                                <span>Scenarios</span>
+                                <span>Progress tracking</span>
+                                <span>EN lessons / DE UI</span>
+                            </div>
+                        </div>
+                        <div class="module-side">
+                            <div>
+                                <strong>ROS 2</strong>
+                                <span>Middleware, navigation, manipulation, and production practice.</span>
+                            </div>
+                            <a class="button button-primary" href="modules/ros2/">Open module</a>
+                        </div>
+                    </article>
+                    <article class="module-card">
+                        <div>
+                            <div class="module-kicker">Sensor fusion</div>
+                            <h3>Sensor Fusion &amp; Signal Processing Trainer</h3>
+                            <p>
+                                From sampled signals, aliasing, and noise through spectra, digital filters, and Kalman
+                                estimation into nonlinear fusion, frames, multi-rate timing, INS/GNSS aiding, diagnostics,
+                                and a capstone pipeline—plus optional depth on particles, factor graphs, and data
+                                association—with lessons, exercises, and scenarios in English and German.
+                            </p>
+                            <div class="module-tags" aria-label="Sensor fusion module features">
+                                <span>Lessons</span>
+                                <span>Exercises</span>
+                                <span>Scenarios</span>
+                                <span>Progress tracking</span>
+                                <span>English and German</span>
+                            </div>
+                        </div>
+                        <div class="module-side">
+                            <div>
+                                <strong>Fusion</strong>
+                                <span>DSP, estimation, navigation, and deployable multi-sensor pipelines.</span>
+                            </div>
+                            <a class="button button-primary" href="modules/sensorfusion/">Open module</a>
+                        </div>
+                    </article>
+                    <article class="module-card">
+                        <div>
+                            <div class="module-kicker">TinyML</div>
+                            <h3>TinyML &amp; Edge AI Trainer</h3>
+                            <p>
+                                From embedded constraints and the end-to-end TinyML pipeline through quantization, pruning,
+                                distillation, NAS, audio and vision on MCUs, profiling, detection, on-device learning,
+                                co-design, Edge MLOps, privacy, transformers, federated learning, and a capstone system
+                                design — with lessons, exercises, and scenarios in English and German.
+                            </p>
+                            <div class="module-tags" aria-label="TinyML module features">
+                                <span>Lessons</span>
+                                <span>Exercises</span>
+                                <span>Scenarios</span>
+                                <span>Progress tracking</span>
+                                <span>English and German</span>
+                            </div>
+                        </div>
+                        <div class="module-side">
+                            <div>
+                                <strong>TinyML</strong>
+                                <span>Deploy, optimize, and ship ML on constrained edge hardware.</span>
+                            </div>
+                            <a class="button button-primary" href="modules/tinyml/">Open module</a>
+                        </div>
+                    </article>
+
                 </div>
             </section>
 
@@ -927,7 +1064,7 @@
                             <h3>About</h3>
                             <p>
                                 Open Academy Dot Space provides free, hands-on learning modules in electronics, PCB design,
-                                robotics, computer vision, and reinforcement learning — browser-based, no account needed.
+                                robotics, computer vision, reinforcement learning, sensor fusion, firmware and RTOS, and TinyML / edge AI — browser-based, no account needed.
                             </p>
                         </div>
                         <div class="footer-column">
@@ -935,7 +1072,12 @@
                             <a href="modules/pcb/">Electronics &amp; PCB Design Trainer</a>
                             <a href="modules/robotics/">Robotics &amp; Autonomy Trainer</a>
                             <a href="modules/computervision/">Modern Computer Vision Trainer</a>
+                            <a href="modules/ros2/">ROS 2 Interactive Course</a>
                             <a href="modules/rlrobotics/">RL for Robotics Trainer</a>
+                            <a href="modules/embeddedsystems/">Embedded Systems &amp; Microcontrollers Trainer</a>
+                            <a href="modules/firmware/">Firmware &amp; RTOS Trainer</a>
+                            <a href="modules/sensorfusion/">Sensor Fusion &amp; Signal Processing Trainer</a>
+                            <a href="modules/tinyml/">TinyML &amp; Edge AI Trainer</a>
                         </div>
                         <div class="footer-column">
                             <h3>Project</h3>

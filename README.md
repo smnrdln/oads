@@ -14,6 +14,9 @@ Free, browser-based technical learning modules with structured lessons, exercise
 | robotics | Robotics & Autonomy Trainer | Active | 4 | 24 | 72 | 24 | EN, DE |
 | computervision | Modern Computer Vision Trainer | Active | 4 | 29 | 87 | 29 | EN, DE |
 | rlrobotics | RL for Robotics Trainer | Active | 4 | 29 | 87 | 29 | EN, DE |
+| ros2 | ROS 2 Interactive Course | Active | 4 | 30 | 90 | 30 | EN, DE |
+| sensorfusion | Sensor Fusion & Signal Processing Trainer | Active | 4 | 15 | 45 | 15 | EN, DE |
+| tinyml | TinyML & Edge AI Trainer | Active | 4 | 23 | 64 | 23 | EN, DE |
 
 ---
 
@@ -38,6 +41,9 @@ Free, browser-based technical learning modules with structured lessons, exercise
 │   ├── robotics/             ← Robotics & Autonomy Trainer
 │   ├── computervision/       ← Modern Computer Vision Trainer
 │   └── rlrobotics/           ← RL for Robotics Trainer
+│   ├── ros2/                 ← ROS 2 Interactive Course
+│   └── sensorfusion/         ← Sensor Fusion & Signal Processing Trainer
+│   └── tinyml/                 ← TinyML & Edge AI Trainer
 │
 │   (Each module folder contains: index.html, levels.js, level1..4.js,
 │    exercises.js, scenarios.js, and lang/ with EN/DE content files)
@@ -96,7 +102,7 @@ The shared engine is designed so future learning modules can be added without ed
 - **`assets/js/i18n.js`** is reused by all modules for the same reason.
 - **`assets/css/engine.css`** is reused by all modules. Module-specific visual overrides, if ever needed, can be added via an additional module-local stylesheet loaded after the engine CSS.
 - **Each module owns only its content, metadata, and translations.** The engine knows nothing about PCB-specific content; it reads from a generic `roadmapData` global and the i18n content registry.
-- **Each module sets its own `MODULE_CONFIG.storageKey`** so progress is stored independently per module (`electronicsProgress`, `roboticsProgress`, `computervisionProgress`, `rlroboticsProgress`).
+- **Each module sets its own `MODULE_CONFIG.storageKey`** so progress is stored independently per module (`electronicsProgress`, `roboticsProgress`, `computervisionProgress`, `rlroboticsProgress`, `tinymlProgress`, and other module keys).
 - **Future modules are addable without touching the shared engine** unless the behavior truly needs to change at the platform level.
 
 ---
@@ -157,6 +163,7 @@ Then open:
 - http://localhost:8000/modules/robotics/ — Robotics trainer
 - http://localhost:8000/modules/computervision/ — Computer Vision trainer
 - http://localhost:8000/modules/rlrobotics/ — RL for Robotics trainer
+- http://localhost:8000/modules/tinyml/ — TinyML & Edge AI trainer
 
 ---
 
