@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Hands-on Embedded Linux course: cross-compilation, U-Boot, kernel configuration, root filesystems, Buildroot, Yocto, device trees, drivers, POSIX, PREEMPT_RT, security, OTA, CI/CD, and production bring-up—with interactive lessons, quizzes, scenarios, and English/German UI. No login or account required; progress stays in your browser.">
+    <meta name="keywords"
+        content="Embedded Linux, Yocto, Buildroot, U-Boot, device tree, cross-compilation, kernel drivers, PREEMPT_RT, secure boot, OTA, embedded systems">
+    <meta name="author" content="Saman Ardalan">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-adsense-account" content="ca-pub-4757211359193207">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc">
+    <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../assets/icons/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../../assets/icons/android-chrome-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="../../assets/icons/site.webmanifest">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://openacademy.space/modules/embeddedlinux/">
+    <meta property="og:title" content="Embedded Linux Interactive Course — Open Academy Dot Space">
+    <meta property="og:description"
+        content="Learn embedded Linux from the four-layer stack through cross-compilation, U-Boot, kernel and rootfs, Buildroot and Yocto, device trees, drivers, real-time, security, OTA, and CI/CD—with structured lessons, exercises, and scenarios. No login or account required; progress stays in your browser.">
+    <meta property="og:site_name" content="Open Academy Dot Space">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://openacademy.space/assets/logo/oads-transparent-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:alt" content="Open Academy Dot Space logo">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Embedded Linux Interactive Course — Open Academy Dot Space">
+    <meta name="twitter:description"
+        content="Interactive Embedded Linux learning with progress tracking, quizzes, scenarios, and English/German localization. No login or account required; progress stays in your browser.">
+    <meta name="twitter:image" content="https://openacademy.space/assets/logo/oads-transparent-512.png">
+    <title>Embedded Linux Interactive Course — Open Academy Dot Space</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4757211359193207"
+        crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "Course",
+                "name": "Embedded Linux Interactive Course",
+                "description": "Interactive Embedded Linux trainer covering toolchains, bootloaders, kernel configuration, root filesystems, Buildroot, Yocto, device trees, drivers, POSIX, real-time, security, networking, flash, OTA, CI/CD, and production bring-up—with lessons, exercises, scenarios, and localization.",
+                "url": "https://openacademy.space/modules/embeddedlinux/",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "Open Academy Dot Space",
+                    "url": "https://openacademy.space/"
+                },
+                "inLanguage": ["en", "de"],
+                "isAccessibleForFree": true,
+                "educationalLevel": "Beginner to Expert / Capstone",
+                "teaches": "Embedded Linux stack, cross-compilation, U-Boot, kernel build, rootfs, Buildroot, Yocto, device tree, drivers, POSIX, real-time, power, security, networking, flash, OTA, CI/CD, bring-up, capstone integration",
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "online"
+                },
+                "author": { "@type": "Person", "name": "Saman Ardalan" }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://openacademy.space/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Embedded Linux Interactive Course",
+                        "item": "https://openacademy.space/modules/embeddedlinux/"
+                    }
+                ]
+            }
+        ]
+    </script>
+    <script>
+        window.MODULE_CONFIG = {
+            id: "embeddedlinux",
+            storageKey: "embeddedlinuxProgress"
+        };
+    </script>
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem('appTheme');
+                const theme = savedTheme === 'light' || savedTheme === 'dark'
+                    ? savedTheme
+                    : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.style.colorScheme = theme;
+            } catch (error) {
+                document.documentElement.dataset.theme = 'dark';
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://openacademy.space/modules/embeddedlinux/">
+    <link rel="stylesheet" href="../../assets/css/engine.css">
+    <link rel="stylesheet" href="../../assets/css/oads-ads.css">
+</head>
+
+<body>
+    <header class="app-header" id="appHeader">
+        <button type="button" class="header-app-strip" id="headerAppExpandBtn"
+            aria-controls="headerAppPanel" aria-expanded="false">
+            <div class="app-logo--strip" aria-hidden="true">
+                <img src="../../assets/logo/oads-transparent-256.png"
+                    srcset="../../assets/logo/oads-transparent-256.png 1x, ../../assets/logo/oads-transparent-512.png 2x"
+                    alt="" width="32" height="32">
+            </div>
+            <span class="header-strip-stats" id="headerStripStats" aria-hidden="true">0% · 0 XP · 0 🔥</span>
+            <svg class="header-app-strip-chevron" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </button>
+        <div class="header-app-panel" id="headerAppPanel">
+            <div class="header-app-panel-inner">
+                <div class="header-main-row">
+        <div class="header-left">
+            <div class="app-logo">
+                <img src="../../assets/logo/oads-transparent-256.png"
+                    srcset="../../assets/logo/oads-transparent-256.png 1x, ../../assets/logo/oads-transparent-512.png 2x"
+                    alt="Open Academy Dot Space logo" width="56" height="56" loading="lazy">
+            </div>
+            <h1 id="appTitle">Embedded Linux Interactive Course</h1>
+            <a class="repo-link" href="https://github.com/smnrdln/oads" target="_blank" rel="noopener noreferrer"
+                aria-label="Open the GitHub repository for this project">GitHub</a>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle" type="button" onclick="toggleTheme()"></button>
+                <div class="lang-switcher-wrap">
+                    <select id="langSwitcher" class="lang-switcher" onchange="i18n.setLanguage(this.value)"></select>
+                </div>
+            </div>
+        </div>
+        <div class="header-stats-desktop" aria-label="Progress summary">
+            <div class="header-stats">
+                <div class="header-stat">
+                    <div class="progress-circle" id="overallProgress"><span>0%</span></div>
+                    <div class="header-stat-text">
+                        <strong id="headerProgressLabel">Progress</strong><br>
+                        <span id="completedTopics">0</span> / <span id="totalTopics">0</span>
+                    </div>
+                </div>
+                <div class="header-stat">
+                    <div class="stat-value-sm" id="xpDisplay">0</div>
+                    <div class="header-stat-text">
+                        <strong id="headerXPLabel">XP</strong><br>
+                        <span id="levelDisplay">Level 1</span>
+                    </div>
+                </div>
+                <div class="header-stat">
+                    <div class="stat-value-sm" id="streakCount">0</div>
+                    <div class="header-stat-text"><strong id="headerStreakLabel">Streak</strong></div>
+                </div>
+            </div>
+        </div>
+        </div>
+            </div>
+        </div>
+    </header>
+
+    <button class="mobile-toggle" id="mobileSidebarToggle" type="button" onclick="toggleSidebar()"
+        aria-controls="sidebar" aria-expanded="false" aria-label="Menu" title="Menu">☰</button>
+
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 id="sidebarTitle">📚 Course Outline</h2>
+                <button class="sidebar-toggle" id="sidebarToggle" type="button" onclick="toggleSidebar()"
+                    aria-controls="sidebar" aria-expanded="false">☰</button>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <div class="sidebar-fallback">
+                    <p>This trainer covers a four-level learning path with lessons, exercises, and scenarios.</p>
+                    <ul>
+                        <li>Level 1: Foundations (hardware, math, sensing, frames)</li>
+                        <li>Level 2: Kinematics, dynamics, control, mobile bases</li>
+                        <li>Level 3: Estimation, SLAM, perception, planning, manipulation</li>
+                        <li>Level 4: Learning, fleets, safety, full-system design</li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="oads-module-stage">
+        <main class="main-content" id="mainContent">
+            <div class="welcome-view welcome-view-static">
+                <h2>Welcome to the Embedded Linux Interactive Course</h2>
+                <p>
+                    This browser-based course teaches Embedded Linux from the four-layer stack through board bring-up, customization, drivers, hardening, and shipping:
+                    structured lessons, quizzes, and decision scenarios. The outline below summarizes scope for fast first
+                    paint and readers without JavaScript.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">Learning Levels</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">21</div>
+                        <div class="stat-label">Topics</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">63</div>
+                        <div class="stat-label">Exercises</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">21</div>
+                        <div class="stat-label">Scenarios</div>
+                    </div>
+                </div>
+
+                <div class="static-summary">
+                    <h3>What this trainer includes</h3>
+                    <ul>
+                        <li>Stack mental model: bootloader, kernel, root filesystem, and userspace integration</li>
+                        <li>Cross-compilation, U-Boot, kernel configuration, initramfs, Buildroot, and Yocto workflows</li>
+                        <li>Device trees, Linux driver model, POSIX programming, PREEMPT_RT, power management, and security</li>
+                        <li>Networking, flash filesystems, OTA updates, CI/CD for embedded Linux, bring-up, and capstone integration</li>
+                        <li>local progress tracking in the browser and English/German content</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <aside class="oads-module-ad-rail" aria-label="Advertisement">
+            <div class="oads-ad-shell" data-oads-slot="moduleRail">
+                <span class="oads-ad-label">Ad</span>
+                <div class="oads-ad-inner"></div>
+            </div>
+        </aside>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="site-footer-links">
+            <span>Open Academy module: Embedded Linux Interactive Course</span>
+            <a href="https://openacademy.space/">Open Academy</a>
+            <a href="https://openacademy.space/privacy.html">Privacy Policy</a>
+            <a href="https://github.com/smnrdln/oads" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/smnrdln/oads/issues" target="_blank"
+                rel="noopener noreferrer">Contact</a>
+        </div>
+    </footer>
+
+    <noscript>
+        <div class="noscript-banner">
+            JavaScript is required for the interactive trainer UI. The static overview above remains available, and the
+            full open-source project is linked in the footer.
+        </div>
+    </noscript>
+
+    <script src="../../assets/js/i18n.js"></script>
+    <script src="lang/en.js"></script>
+    <script src="lang/de.js"></script>
+    <script src="lang/manifest.js"></script>
+    <script src="level1.js"></script>
+    <script src="level2.js"></script>
+    <script src="level3.js"></script>
+    <script src="level4.js"></script>
+    <script src="exercises.js"></script>
+    <script src="scenarios.js"></script>
+    <script src="levels.js"></script>
+    <script src="../../assets/js/engine.js"></script>
+    <script src="../../assets/js/oads-ads-config.js"></script>
+    <script src="../../assets/js/oads-ads.js"></script>
+</body>
+
+</html>

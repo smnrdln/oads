@@ -1,0 +1,106 @@
+// ════════════════════════════════════════════════════════
+// German Language Pack (de) — Embedded-Linux-Modul (UI only; lessons fall back to EN)
+// ════════════════════════════════════════════════════════
+
+i18n.registerLanguage('de', 'Deutsch', {
+
+    'app.title': 'Embedded Linux interaktiver Kurs',
+    'header.progress': 'Fortschritt',
+    'header.xp': 'XP',
+    'header.level': 'Stufe %s',
+    'header.streak': 'Serie',
+    'header.statsToggle.expand': 'Details zu Fortschritt, XP und Serie anzeigen',
+    'header.statsToggle.expandWithSummary': 'Details zu Fortschritt, XP und Serie anzeigen (aktuell %s)',
+    'header.statsToggle.collapse': 'Details zu Fortschritt, XP und Serie ausblenden',
+    'header.appToggle.expand': 'Vollständige Kopfzeile öffnen (%s)',
+    'header.appToggle.collapse': 'Kopfzeile schließen',
+    'header.appToggle.collapseLabel': 'Kopfzeile schließen',
+
+    'sidebar.title': '📚 Kursübersicht',
+    'sidebar.menu': 'Menü',
+    'search.label': '🔎 Inhalte suchen',
+    'search.placeholder': 'Lektionen, Übungen, Szenarien und Quellen durchsuchen',
+    'search.clear': 'Löschen',
+    'search.help': 'Suche im Lektionstext, in Kernpunkten, Übungen, Szenarien und Quellen.',
+    'search.summary': '%s Themen gefunden · %s Treffer',
+    'search.noResults': 'Keine Treffer für "%s"',
+    'search.topicCount': '%s Themen',
+
+    'level.level1.name': 'Stufe 1: Einsteiger',
+    'level.level2.name': 'Stufe 2: Mittelstufe',
+    'level.level3.name': 'Stufe 3: Fortgeschritten',
+    'level.level4.name': 'Stufe 4: Experte / Capstone',
+
+    'category.essential': 'Grundlagen',
+    'category.embedded': 'Embedded',
+    'category.robotics': 'Robotik',
+
+    'welcome.heading': 'Willkommen beim Embedded Linux interaktiven Kurs',
+    'welcome.description': 'Wähle in der Seitenleiste ein Thema. Die Lektionen sind derzeit auf Englisch (wie im Lehrplan); die Oberfläche ist auf Deutsch verfügbar.',
+    'welcome.totalXP': 'Gesamt-XP',
+    'welcome.exercisesDone': 'Abgeschlossene Übungen',
+    'welcome.scenariosSolved': 'Gelöste Szenarien',
+
+    'achievements.title': '🏆 Erfolge',
+    'achievement.first_steps.title': 'Erste Schritte',
+    'achievement.first_steps.desc': 'Erstes Thema abgeschlossen',
+    'achievement.beginner_master.title': 'Anfänger-Meister',
+    'achievement.beginner_master.desc': 'Stufe 1 abgeschlossen',
+    'achievement.quiz_master.title': 'Quiz-Meister',
+    'achievement.quiz_master.desc': '10 Übungen abgeschlossen',
+    'achievement.scenario_solver.title': 'Szenario-Löser',
+    'achievement.scenario_solver.desc': '5 Szenarien gelöst',
+    'achievement.intermediate.title': 'Embedded Linux Mittelstufe',
+    'achievement.intermediate.desc': 'Stufe 2 abgeschlossen',
+    'achievement.advanced.title': 'Integrations-Profi',
+    'achievement.advanced.desc': 'Stufe 3 abgeschlossen',
+    'achievement.expert.title': 'System-Experte',
+    'achievement.expert.desc': 'Stufe 4 abgeschlossen',
+    'achievement.perfectionist.title': 'Perfektionist',
+    'achievement.perfectionist.desc': '100 % abgeschlossen',
+
+    'topic.comingSoon': 'Die Inhalte zu diesem Thema folgen in Kürze.',
+    'topic.keyTakeaways': '🎯 Wichtigste Erkenntnisse',
+    'topic.relatedTopics': '🔗 Verwandte Themen',
+    'topic.furtherReading': '📚 Weiterführende Quellen',
+    'topic.markCompleted': '✅ Als erledigt markieren (+20 XP)',
+    'topic.completed': '✅ Abgeschlossen',
+    'topic.nextTopic': 'Nächstes Thema →',
+    'topic.nextLevel': 'Nächste Stufe →',
+
+    'exercises.title': '🎯 Übungen — Wissen testen',
+    'exercises.retry': '🔄 Übungen wiederholen',
+    'exercises.submitAnswer': 'Antwort absenden',
+    'exercises.checkAnswer': 'Antwort prüfen',
+    'exercises.selectAnswer': 'Bitte wähle eine Antwort aus.',
+    'exercises.selectTrueFalse': 'Bitte wähle Richtig oder Falsch aus.',
+    'exercises.enterNumeric': 'Bitte gib eine numerische Antwort ein.',
+    'exercises.calculation': '📐 Berechnung',
+    'exercises.trueOrFalse': '✅ Richtig oder Falsch',
+    'exercises.true': '✅ Richtig',
+    'exercises.false': '❌ Falsch',
+    'exercises.typePlaceholder': 'Antwort eingeben ...',
+
+    'quiz.correct': '✅ Richtig! +%s XP',
+    'quiz.correctCalc': '✅ Richtig! (Antwort: %s%s) +%s XP',
+    'quiz.incorrect': '❌ Nicht richtig.',
+    'quiz.incorrectCalc': '❌ Nicht ganz. Die richtige Antwort ist %s%s.',
+
+    'scenarios.title': '🔧 Praxis-Szenario',
+    'scenario.excellent': '✅ Sehr gut! +%s XP',
+    'scenario.notQuite': '❌ Nicht ganz.',
+
+    'notification.levelUp': '🎉 Stufenaufstieg! Du bist jetzt Stufe %s.',
+    'notification.achievement': '🏆 Erfolg: %s!',
+    'notification.completed': '✅ Abgeschlossen: %s',
+
+    'visualRef.title': '🖼️ Visuelle Referenz',
+    'visualRef.openNewTab': 'In neuem Tab öffnen ↗',
+
+    'language.label': '🌐',
+
+    'theme.dark': 'Dunkel',
+    'theme.light': 'Hell',
+    'theme.switchToDark': 'Zum dunklen Modus wechseln',
+    'theme.switchToLight': 'Zum hellen Modus wechseln'
+});
