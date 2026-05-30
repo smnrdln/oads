@@ -10,6 +10,9 @@
  * Slot IDs must be digits only, from the same AdSense account as client (ca-pub-…).
  */
 window.OADS_ADS = {
+    // Master switch. Set to true to render AdSense units; false disables all ads
+    // (ad gutters collapse to a clean layout). Flip back to true to re-enable.
+    enabled: false,
     client: 'ca-pub-4757211359193207',
     defaultSlot: '',
     slots: {

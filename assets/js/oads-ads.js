@@ -14,6 +14,7 @@
     'use strict';
 
     var cfg = window.OADS_ADS || {};
+    var enabled = cfg.enabled !== false; /* default on unless explicitly disabled */
     var client = cfg.client || 'ca-pub-4757211359193207';
     var slots = cfg.slots || {};
     var defaultSlot = cfg.defaultSlot;
@@ -125,7 +126,24 @@
         mountAd(shell, mobileBannerSlotId);
     }
 
+    /**
+     * Collapses every ad region to a clean, ad-free layout. Used when ads are
+     * disabled via config so no empty gutters or "Ad" labels remain.
+     */
+    function disableAllAds() {
+        document.querySelectorAll('[data-oads-slot]').forEach(function (region) {
+            region.classList.add('oads-ad-rail--empty');
+            markLayoutNoAds(region);
+        });
+    }
+
     function initAds() {
+        /* ── Disabled via config: collapse all ad regions and stop ── */
+        if (!enabled) {
+            disableAllAds();
+            return;
+        }
+
         /* ── Mobile path: skip rail slots, inject banner if configured ── */
         if (isMobile) {
             /* Mark all rail shells as empty so CSS hides them */
